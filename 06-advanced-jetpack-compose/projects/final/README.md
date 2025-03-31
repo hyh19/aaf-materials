@@ -91,10 +91,10 @@
 
 ## 使用的主要依赖库
 
-- Jetpack Compose BOM (2023.10.01)
-- Compose Material 3 (1.1.2)
-- Coil Compose (2.4.0) - 图片加载
-- KotlinX DateTime (0.4.0) - 日期时间处理
+- Jetpack Compose BOM（2023.10.01）
+- Compose Material 3（1.1.2）
+- Coil Compose（2.4.0）- 图片加载
+- KotlinX DateTime（0.4.0）- 日期时间处理
 
 ## 常见问题解决
 
@@ -121,6 +121,8 @@
 ```
 
 如果没有可用的模拟器，请通过 Android Studio 的 AVD Manager 创建一个。
+
+项目已验证在 Pixel_3a_API_34_extension_level_7_arm64-v8a 模拟器上可正常运行。
 
 ## 项目结构
 
