@@ -1,7 +1,3 @@
-好的，请提供 Jetpack Compose 英文技术文章，我将按照您的要求进行翻译。
-
---- START OF FILE 05-jetpack-compose.md ---
-
 # 5. Jetpack Compose
 
 作者：Fuad Kamal
