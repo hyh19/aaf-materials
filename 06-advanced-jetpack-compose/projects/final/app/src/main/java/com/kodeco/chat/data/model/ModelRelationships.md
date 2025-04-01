@@ -87,7 +87,37 @@ classDiagram
 
 ## 数据流动分析
 
-基于这些模型类关系，我们可以推断出应用中的数据流动模式：
+基于这些模型类关系，我们可以通过以下流程图直观地展示应用中的数据流动模式：
+
+```mermaid
+flowchart TD
+    subgraph 用户创建聊天室
+        A1[用户操作] --> A2[创建 ChatRoom 对象]
+        A2 --> A3[设置 createdBy 为当前用户 ID]
+        A3 --> A4[分配消息集合 ID\nmessagesCollectionId]
+        A4 --> A5[保存聊天室信息]
+    end
+    
+    subgraph 消息展示流程
+        B1[数据源] --> B2[获取原始 Message 对象]
+        B3[用户列表] --> B4[查找消息发送者]
+        B2 --> B5[创建 MessageUiModel]
+        B4 --> B5
+        B5 --> B6[传递给 UI 层渲染]
+    end
+    
+    subgraph 聊天室消息加载
+        C1[获取 ChatRoom 对象] --> C2[读取 messagesCollectionId]
+        C2 --> C3[查询相关消息]
+        C3 --> C4[转换为 MessageUiModel]
+        C4 --> C5[UI 显示]
+    end
+    
+    A5 -.-> C1
+    B6 -.-> C5
+```
+
+此外，数据流动过程中的关键步骤包括：
 
 1. **用户创建聊天室**：
    - 创建 ChatRoom 对象，设置 createdBy 为当前用户 ID
@@ -103,6 +133,80 @@ classDiagram
    - 获取 ChatRoom 对象
    - 使用 messagesCollectionId 查询相关消息
    - 将消息转换为 MessageUiModel 用于显示
+
+### 数据架构流动图
+
+以下图表展示了聊天应用中数据在不同架构层之间的流动路径：
+
+```mermaid
+flowchart LR
+    subgraph 数据层
+        DB[(数据库/API)] --> Repository
+    end
+    
+    subgraph 业务层
+        Repository --> ChatUseCase
+        Repository --> MessageUseCase
+        Repository --> UserUseCase
+    end
+    
+    subgraph 表现层
+        ChatUseCase --> ViewModel
+        MessageUseCase --> ViewModel
+        UserUseCase --> ViewModel
+        ViewModel --> UI["UI 组件"]
+    end
+    
+    %% 数据模型转换流
+    DB --> |原始数据| RawData[/"原始数据对象"/]
+    RawData --> |转换| Models["领域模型\nChatRoom/Message/User"]
+    Models --> |转换| UiModels[/"UI 模型\nMessageUiModel"/]
+    UiModels --> |绑定| UI
+    
+    %% 数据流向说明
+    classDef dataFlow fill:#f9f,stroke:#333,stroke-width:2px
+    class RawData,Models,UiModels dataFlow
+```
+
+在这个架构中:
+- 数据层负责原始数据的存取
+- 业务层处理领域逻辑并转换数据模型
+- 表现层将数据适配为UI友好的格式并管理状态
+- MessageUiModel 作为桥接数据模型和UI的关键组件，包含了完整的显示信息
+
+### 消息数据生命周期
+
+下图展示了一条消息从创建到显示的完整生命周期：
+
+```mermaid
+stateDiagram-v2
+    [*] --> 创建消息
+    创建消息 --> 存储数据库: 发送消息
+    存储数据库 --> 读取消息: 查询消息
+    读取消息 --> 原始消息对象: 数据映射
+    原始消息对象 --> MessageUiModel: 转换处理
+    
+    state 转换处理 {
+        [*] --> 查找发送用户
+        查找发送用户 --> 合并用户信息
+        合并用户信息 --> 创建UI模型
+        创建UI模型 --> [*]
+    }
+    
+    MessageUiModel --> UI渲染: Compose绘制
+    UI渲染 --> 用户交互: 展示给用户
+    用户交互 --> [*]
+    
+    note right of 存储数据库
+        保存到 ChatRoom.messagesCollectionId 指定的集合
+    end note
+    
+    note right of 查找发送用户
+        通过 Message.userId 匹配 User 对象
+    end note
+```
+
+这个生命周期图清晰地展示了消息数据是如何从用户输入到最终显示的整个流程，以及 MessageUiModel 在其中扮演的关键角色。
 
 ## 设计模式分析
 
