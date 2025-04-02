@@ -18,12 +18,10 @@
 
 创建账户后，你应该会看到在 Ditto 网站上创建应用的提示。
 
-<!-- ![1743589817206](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743589815291.png) -->
 ![1743592962209](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743592960517.png)
 
 输入应用的名称，URL 应该会自动填充。通常，你会想使用与 Android 应用相同或类似的名称，但这并不重要。点击 **Create App** 按钮，网站会将你带到快速入门页面的 **Step 1**。
 
-<!-- ![1743589837872](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743589835913.png) -->
 ![1743592994078](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743592991706.png)
 
 选择 Android 作为框架。网站将带你到 **Step 2**，上面写着 **Install Ditto**。下一节将介绍如何执行此操作。点击 **Next step** 按钮；它会显示一些示例代码。不要复制它，但请注意其中显示的 `appID` 和 `token` 值与页面顶部显示的 **App ID** 和 **Playground Token** 相同。稍后你将需要这些密钥。
