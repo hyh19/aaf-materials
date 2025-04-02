@@ -1,7 +1,5 @@
 # 5. Jetpack Compose
 
-作者：Fuad Kamal
-
 传统上，Android 应用程序依赖于基于 XML 的布局。如今，Android 开发已转向使用 Compose 作为标准框架。Compose 描述了一套更庞大的基于 Kotlin 的框架和应用架构，它并非 Android 开发所特有。例如，Slack 的开发团队基于 Compose 构建了 [Circuit](https://slackhq.github.io/circuit/) 框架。Compose UI 只是七个 Compose 框架中专门针对应用程序开发 UI 层的框架之一。使用 Compose UI 相较于旧的 View 实现带来了许多改进，包括显著减少构建时间、APK 大小和运行时性能。它还使得构建 UI 更简单、更直观，并且更易于维护和调试。有关 Compose 和旧 Android View 实现的更深入比较，请参阅[这篇文章](https://developer.android.com/jetpack/compose/migrate/compare-performance)。
 
 现代 Android 开发已从 MVVM (Model-View-Viewmodel) 转向 **MVI** (Model-View-Intent) 架构，现在使用 Compose UI 而不是 XML 布局来构建 UI 层。MVI 背后的关键概念之一是单向数据流（unidirectional data flow）。通常，你可能有多个数据源，包括本地存储和网络源。这些通常使用 **Repository** 模式进行抽象和访问。ViewModel 访问 Repository 上的方法，并使用 **Flow** 向 UI 提供单向数据。Flow 通常由一个数据发射器（emitter）和该发射器的订阅者（subscribers）组成。它提供了一种高效的内存使用模型，因为只有当存在活跃的订阅者使用来自 Flow 的数据时，Flow 才会消耗内存。对于 Android，有特定的 Flow 实现能够感知 Android 生命周期。因此，当视图对用户不再可见时，数据将不再被消耗，从而释放内存。

@@ -1,7 +1,5 @@
 # 6. Advanced Jetpack Compose
 
-Written by Fuad Kamal
-
 In the previous chapter, you learned about some building blocks in Compose UI to start developing a basic UI for an Android app. Using Compose, you built up the interface for the chat app using mocked data. It’s like you made the yummy-looking but completely fake cake some stores display. But you want to have your cake and eat it, too! In this chapter, you’ll learn how to make your app more functional using ViewModel for managing app data, adopt MVI (Model-View-Intent) to structure your app behavior and navigate through app screens using the Navigation library. Get ready to *chat it up*!
 
 ## State
