@@ -30,19 +30,19 @@
 
 你需要在应用中添加 Ditto 的 Gradle 依赖项，因此打开本章的起始项目。打开 **libs.versions.toml**，并在 `[versions]` 部分添加：
 
-```
+```toml
 ditto = "4.5.0"
 ```
 
 在 `[libraries]` 部分，添加：
 
-```
+```toml
 ditto = { module = "live.ditto:ditto", version.ref = "ditto" }
 ```
 
 在模块级 Gradle 文件中，添加以下依赖项：
 
-```
+```kotlin
 implementation(libs.ditto)
 ```
 
@@ -54,7 +54,7 @@ implementation(libs.ditto)
 
 打开 **MainActivity.kt** 并将以下函数添加到 `MainActivity` 中：
 
-```
+```kotlin
 private fun checkPermissions() {
   val missing = DittoSyncPermissions(this).missingPermissions()
   if (missing.isNotEmpty()) {
@@ -65,7 +65,7 @@ private fun checkPermissions() {
 
 你需要导入以下内容：
 
-```
+```kotlin
 import live.ditto.transports.DittoSyncPermissions
 ```
 
@@ -79,7 +79,7 @@ import live.ditto.transports.DittoSyncPermissions
 
 如果你在第 4 章"Gradle 基础：揭开幕后"中按步骤操作，你已经创建了 **keys.properties** 文件。如果没有，请参考该章节了解如何创建此文件并更新模块级 Gradle 文件以引用该文件，方法是在 `plugins { }` 和 `android { }` 块之间添加以下内容：
 
-```
+```kotlin
 val keysPropertiesFile: File = rootProject.file("keys.properties")
 val keysProperties = Properties()
 keysProperties.load(FileInputStream(keysPropertiesFile))
@@ -87,14 +87,14 @@ keysProperties.load(FileInputStream(keysPropertiesFile))
 
 在 **keys.properties** 文件中添加以下值，将每个变量的值替换为你的 `appID` 和 `token` 的值：
 
-```
+```properties
 DITTO_APP_ID = "replace with your app ID"
 DITTO_TOKEN = "replace with your token"
 ```
 
 然后，回到你的模块级 Gradle 文件，在 `buildTypes { }` 块中，添加：
 
-```
+```kotlin
 debug {
   buildConfigField("String", "DITTO_APP_ID", keysProperties["DITTO_APP_ID"] as String)
   buildConfigField("String", "DITTO_TOKEN", keysProperties["DITTO_TOKEN"] as String)
@@ -105,7 +105,7 @@ debug {
 
 在 `buildFeatures { }` 块中，添加：
 
-```
+```kotlin
 buildConfig = true
 ```
 
@@ -115,7 +115,7 @@ buildConfig = true
 
 最后，回到 **MainActivity.kt**，添加此函数：
 
-```
+```kotlin
 private fun setupDitto() {
   val androidDependencies = DefaultAndroidDittoDependencies(applicationContext)
   DittoLogger.minimumLogLevel = DittoLogLevel.DEBUG
@@ -133,7 +133,7 @@ private fun setupDitto() {
 
 你需要导入以下内容：
 
-```
+```kotlin
 import com.kodeco.chat.DittoHandler.Companion.ditto
 import live.ditto.Ditto
 import live.ditto.DittoIdentity
@@ -172,7 +172,7 @@ import live.ditto.android.DefaultAndroidDittoDependencies
 
 从最终项目的 **repository** 包中复制 **Repository.kt** 和 **RepositoryImpl.kt**，并将它们粘贴到项目中的相同位置。**Repository.kt** 是接口，**RepositoryImpl.kt** 是其实现。打开 **Repository.kt** 并查看其中定义的方法。特别注意，有一个 `getAllUsers()` 方法来检索参与此应用 Ditto 网格的所有用户。最终，此流由 **RepositoryImpl.kt** 中的以下函数填充：
 
-```
+```kotlin
 private fun getAllUsersFromDitto() {
   ditto.let { ditto: Ditto ->
     // 1
@@ -202,7 +202,7 @@ private fun getAllUsersFromDitto() {
 
 在 **MainViewModel.kt** 中，删除 `import com.kodeco.chat.data.initialMessages` 的导入。然后，按如下方式更新类：
 
-```
+```kotlin
 class MainViewModel : ViewModel() {
   // 1
   private val userId = UUID.randomUUID().toString()
@@ -280,7 +280,7 @@ class MainViewModel : ViewModel() {
 
 你需要导入以下内容：
 
-```
+```kotlin
 import com.kodeco.chat.data.repository.RepositoryImpl
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -289,7 +289,7 @@ import live.ditto.DittoAttachmentToken
 
 打开 **MainActivity.kt**。按如下方式更新 `messagesWithUsers` 的定义：
 
-```
+```kotlin
 val messagesWithUsers: List<MessageUiModel> by viewModel
   .roomMessagesWithUsersFlow
   .collectAsStateWithLifecycle(initialValue = emptyList())
@@ -299,7 +299,7 @@ val messagesWithUsers: List<MessageUiModel> by viewModel
 
 同时，更新 `currentUiState`：
 
-```
+```kotlin
 val currentUiState =
   ConversationUiState(
     channelName = "Android Apprentice",
@@ -312,7 +312,7 @@ val currentUiState =
 
 接下来，你需要更新数据类。打开 **ConversationUiState.kt** 并按如下方式更新：
 
-```
+```kotlin
 class ConversationUiState(
   val channelName: String,
   initialMessages: List<MessageUiModel>,
@@ -356,7 +356,7 @@ data class Message(
 
 导入以下内容：
 
-```
+```kotlin
 import com.kodeco.chat.data.createdOnKey
 import com.kodeco.chat.data.dbIdKey
 import com.kodeco.chat.data.model.toInstant
@@ -370,7 +370,7 @@ import live.ditto.DittoDocument
 
 类似地，向 **ChatRoom.kt** 添加以下 `constructor`：
 
-```
+```kotlin
 constructor(document: DittoDocument) : this(
   document[dbIdKey].stringValue,
   document[nameKey].stringValue,
@@ -384,7 +384,7 @@ constructor(document: DittoDocument) : this(
 
 导入以下内容：
 
-```
+```kotlin
 import com.kodeco.chat.data.collectionIdKey
 import com.kodeco.chat.data.createdByKey
 import com.kodeco.chat.data.createdOnKey
@@ -397,7 +397,7 @@ import live.ditto.DittoDocument
 
 向 **User.kt** 添加以下 `constructor`：
 
-```
+```kotlin
 constructor(document: DittoDocument) : this(
   document[dbIdKey].stringValue,
   document[firstNameKey].stringValue,
@@ -407,7 +407,7 @@ constructor(document: DittoDocument) : this(
 
 你需要导入以下内容：
 
-```
+```kotlin
 import com.kodeco.chat.data.dbIdKey
 import com.kodeco.chat.data.firstNameKey
 import com.kodeco.chat.data.lastNameKey

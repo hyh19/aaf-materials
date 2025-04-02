@@ -93,7 +93,7 @@ flowchart LR
     B --> B3["数据源抽象"]
     B --> B4["业务逻辑封装"]
     
-    C --> C1["P2P通信"]
+    C --> C1["P2P 通信"]
     C --> C2["离线同步"]
     C --> C3["权限管理"]
     C --> C4["数据集合与文档"]
@@ -101,20 +101,20 @@ flowchart LR
     D --> D1["Kotlin Flow"]
     D --> D2["状态提升"]
     D --> D3["组合数据流"]
-    D --> D4["UI状态收集"]
+    D --> D4["UI 状态收集"]
     
-    B1 --> B11["Repository接口"]
-    B1 --> B12["RepositoryImpl实现"]
+    B1 --> B11["Repository 接口"]
+    B1 --> B12["RepositoryImpl 实现"]
     
-    C4 --> C41["Collection操作"]
-    C4 --> C42["Document映射"]
-    C4 --> C43["Subscribe订阅"]
+    C4 --> C41["Collection 操作"]
+    C4 --> C42["Document 映射"]
+    C4 --> C43["Subscribe 订阅"]
     
-    D3 --> D31["combine操作符"]
-    D3 --> D32["Flow转换"]
+    D3 --> D31["combine 操作符"]
+    D3 --> D32["Flow 转换"]
     
     D4 --> D41["collectAsStateWithLifecycle"]
-    D4 --> D42["Compose重组"]
+    D4 --> D42["Compose 重组"]
 ```
 
 ## 扩展分析
