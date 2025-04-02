@@ -12,17 +12,17 @@
 
 你需要在 Ditto 创建一个开发者账户，并在其网站上构建一个个人应用。这样可以获取 SDK 所需的认证密钥。在网络浏览器中，导航到 [Ditto.live](https://ditto.live/)，然后点击 **Get Started** 按钮。接着，按照步骤创建一个账户。最简单的方法是使用你现有的 Google 账户注册。勾选同意服务条款的复选框，以启用 **Sign up with Google** 按钮。
 
- ![](./Android Fundamentals by Tutorials, Chapter 7_Advanced Architecture_ Kodeco_files/original.png)
+![picture 1](../../images/0a2d330834535565da253e937773f0b4fa21653ba4db9d42dece8916ed95a4c4.png)  
 
 在 Ditto 网站上完成创建新应用的步骤。完成后，你将能够访问应用的网页，获取聊天应用所需的唯一 SDK 密钥。
 
 创建账户后，你应该会看到在 Ditto 网站上创建应用的提示。
 
- ![](./Android Fundamentals by Tutorials, Chapter 7_Advanced Architecture_ Kodeco_files/original(1).png)
+![picture 2](../../images/c8d6a7849527fde70f07b4a6aa84eee132bc095bfa635e30068692ca5d8e4ebb.png)  
 
 输入应用的名称，URL 应该会自动填充。通常，你会想使用与 Android 应用相同或类似的名称，但这并不重要。点击 **Create App** 按钮，网站会将你带到快速入门页面的 **Step 1**。
 
- ![](./Android Fundamentals by Tutorials, Chapter 7_Advanced Architecture_ Kodeco_files/original(2).png)
+![picture 3](../../images/edc7cb71580a8decf1e649903f0b22d7b736db59f0f2d16863407e38517b82b7.png)  
 
 选择 Android 作为框架。网站将带你到 **Step 2**，上面写着 **Install Ditto**。下一节将介绍如何执行此操作。点击 **Next step** 按钮；它会显示一些示例代码。不要复制它，但请注意其中显示的 `appID` 和 `token` 值与页面顶部显示的 **App ID** 和 **Playground Token** 相同。稍后你将需要这些密钥。
 
@@ -30,13 +30,13 @@
 
 你需要在应用中添加 Ditto 的 Gradle 依赖项，因此打开本章的起始项目。打开 **libs.versions.toml**，并在 `[versions]` 部分添加：
 
-```toml
+```kotlin
 ditto = "4.5.0"
 ```
 
 在 `[libraries]` 部分，添加：
 
-```toml
+```kotlin
 ditto = { module = "live.ditto:ditto", version.ref = "ditto" }
 ```
 
