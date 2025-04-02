@@ -1,4 +1,9 @@
-# Jetpack Compose 英文文章翻译
+---
+description: 翻译 Jetpack Compose 英文文章
+globs:
+alwaysApply: false
+---
+# Jetpack Compose 英文文章翻译指令
 
 ## 任务描述
 
