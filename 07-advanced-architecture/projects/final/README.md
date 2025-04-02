@@ -73,27 +73,48 @@
 
 ### 使用命令行运行
 
-1. 启动模拟器：
+以下是完整的运行步骤，每个步骤都经过验证可以确保应用正常运行：
+
+1. 检查并关闭已有的模拟器实例（避免多实例冲突）：
 
    ```bash
-   # 先检查可用的模拟器
-   ~/Library/Android/sdk/emulator/emulator -list-avds
-   
-   # 启动指定的模拟器（使用 -read-only 标志避免多实例问题）
+   # 此命令会列出所有连接的设备并关闭正在运行的模拟器
+   adb devices && adb emu kill
+   ```
+
+2. 确保使用正确的 JDK 版本（项目需要 JDK 17）：
+
+   ```bash
+   # 设置 JAVA_HOME 环境变量指向 JDK 17
+   export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+   ```
+
+3. 启动模拟器（使用只读模式避免多实例问题）：
+
+   ```bash
+   # 使用 -read-only 标志启动模拟器
    ~/Library/Android/sdk/emulator/emulator -avd Pixel_3a_API_34_extension_level_7_arm64-v8a -read-only
    ```
 
-2. 构建并安装应用：
+   启动过程中你会看到一些日志输出，等待直到看到 "Boot completed" 消息。
+
+4. 清理并重新构建项目（确保干净的构建）：
 
    ```bash
-   ./gradlew installDebug
+   # 等待模拟器完全启动后再构建（这里等待 10 秒）
+   sleep 10 && ./gradlew clean installDebug
    ```
 
-3. 启动应用：
+   注意：构建过程中可能会看到一些警告，如未使用的变量，这些不影响应用运行。
+
+5. 启动应用：
 
    ```bash
+   # 使用 adb 启动主活动
    adb shell am start -n com.kodeco.chat/.MainActivity
    ```
+
+完成以上步骤后，应用应该会在模拟器中启动并运行。如果遇到问题，请参考"常见问题解决"章节。
 
 ## 使用的主要依赖库
 
