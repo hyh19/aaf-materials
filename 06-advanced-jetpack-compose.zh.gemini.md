@@ -76,7 +76,40 @@ BasicTextField(
 
 在单向数据流中，状态更改和 UI 更新都只有一个方向。这意味着状态更改事件只能来自一个来源，通常是用户交互，而 UI 更新只能来自状态管理器。Compose 基于**解耦** UI 中**显示状态**的组件与**存储和更改状态**的应用部分的理念。
 
-事件 状态 状态 UI
+<svg width="600" height="197" viewBox="0 0 600 197" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="unidirectional_data_flow">
+<g id="Arrow">
+<path id="Line" d="M222 56L222 128" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip" d="M228.345 126.805L222.175 134.805C221.971 135.069 221.571 135.064 221.375 134.794L215.545 126.794C215.304 126.464 215.54 126 215.949 126L227.949 126C228.364 126 228.598 126.477 228.345 126.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle" cx="222" cy="50" r="5" transform="rotate(90 222 50)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Arrow_2">
+<path id="Line_2" d="M378 140L378 68" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_2" d="M371.655 69.1946L377.825 61.1949C378.029 60.9309 378.429 60.9363 378.625 61.2058L384.455 69.2055C384.696 69.536 384.46 70 384.051 70L372.051 70C371.636 70 371.402 69.5234 371.655 69.1946Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_2" cx="378" cy="146" r="5" transform="rotate(-90 378 146)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Shape">
+<rect x="395" y="87" width="55" height="28" rx="8" fill="white"></rect>
+<rect x="395" y="87" width="55" height="28" rx="8" stroke="#333333" stroke-width="2"></rect>
+<text id="Event" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="406.914" y="105.5">Event</tspan></text>
+</g>
+<g id="Shape_2">
+<rect x="150" y="87" width="55" height="28" rx="8" fill="white"></rect>
+<rect x="150" y="87" width="55" height="28" rx="8" stroke="#333333" stroke-width="2"></rect>
+<text id="State" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="162.957" y="105.5">State</tspan></text>
+</g>
+<g id="ShapeGreen">
+<rect x="199" y="11" width="202" height="48" rx="13" fill="#D6E18D"></rect>
+<rect x="199" y="11" width="202" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="State_2" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="280.609" y="41">State</tspan></text>
+</g>
+<g id="ShapeGreen_2">
+<rect x="199" y="138" width="202" height="48" rx="13" fill="#D6E18D"></rect>
+<rect x="199" y="138" width="202" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="UI" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="291.188" y="168">UI</tspan></text>
+</g>
+</g>
+</svg>
 
 另一个关键概念是 UI **观察状态**。每当有新状态时，UI 就会*重组*以显示它。Android 提供了一些非常方便的 **Android 架构组件**来帮助实现这一点。对于状态管理器，有 **ViewModel**。对于以单向方式观察数据，有 **Flow**。
 
@@ -163,11 +196,181 @@ suspend fun createMessageForRoom(message: Message, chatRoom: ChatRoom) { // 译�
 
 传统上，如果你的应用需要数据，它可能会通过网络 API 或数据库服务等方式创建一个对此数据的请求。例如，当视图启动时，你从 ViewModel 请求数据，然后 ViewModel 从数据层请求该数据。接收到的数据沿相反方向返回，从数据层到 ViewModel，然后 UI 被更新。你可能使用挂起函数（协程）异步完成所有这些操作。
 
-数据层创建请求 视图请求数据 视图启动 数据层接收数据 ViewModel 接收数据 视图接收数据
+<svg width="600" height="511" viewBox="0 0 600 511" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="traditional_data_flow">
+<g id="Arrow">
+<path id="Line" d="M150 433L150 386" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip" d="M143.655 387.195L149.825 379.195C150.029 378.931 150.429 378.936 150.625 379.206L156.455 387.206C156.696 387.536 156.46 388 156.051 388L144.051 388C143.636 388 143.402 387.523 143.655 387.195Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle" cx="150" cy="439" r="5" transform="rotate(-90 150 439)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Arrow_2">
+<path id="Line_2" d="M151 216L151 128C151 104.528 170.028 85.5 193.5 85.5V85.5L215 85.5" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+<circle id="Circle_2" cx="6" cy="6" r="5" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 145 222)" fill="white" stroke="#333333" stroke-width="2"></circle>
+<path id="Tip_2" d="M210.805 92.3447L218.805 86.1749C219.069 85.9713 219.064 85.5712 218.794 85.3749L210.794 79.5451C210.464 79.3043 210 79.5403 210 79.9492L210 91.9488C210 92.3639 210.477 92.5983 210.805 92.3447Z" fill="white" stroke="#333333" stroke-width="2"></path>
+</g>
+<g id="Arrow_3">
+<path id="Line_3" d="M316 85.5L404 85.5C427.472 85.5 446.5 104.528 446.5 128V128L446.5 170.5" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+<path id="Tip_3" d="M439.655 169.305L445.825 177.305C446.029 177.569 446.429 177.564 446.625 177.294L452.455 169.294C452.696 168.964 452.46 168.5 452.051 168.5L440.051 168.5C439.636 168.5 439.402 168.977 439.655 169.305Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_3" cx="6" cy="6" r="5" transform="matrix(-4.37114e-08 1 1 4.37114e-08 310 79.5)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="ShapeGreen">
+<rect x="76" y="181" width="151" height="74" rx="13" fill="#D6E18D"></rect>
+<rect x="76" y="181" width="151" height="74" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Data Layer creates request" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="117.334" y="213.25">Data Layer
+</tspan><tspan x="101.447" y="233.25">creates request</tspan></text>
+</g>
+<g id="Arrow_4">
+<path id="Line_4" d="M150 312L150 265" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_4" d="M143.655 266.195L149.825 258.195C150.029 257.931 150.429 257.936 150.625 258.206L156.455 266.206C156.696 266.536 156.46 267 156.051 267L144.051 267C143.636 267 143.402 266.523 143.655 266.195Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_4" cx="150" cy="318" r="5" transform="rotate(-90 150 318)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="ShapeGreen_2">
+<rect x="76" y="302" width="151" height="74" rx="13" fill="#D6E18D"></rect>
+<rect x="76" y="302" width="151" height="74" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="View Requests Data" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="87.6045" y="344.25">View Requests Data</tspan></text>
+</g>
+<g id="ShapeGreen_3">
+<rect x="76" y="423" width="151" height="74" rx="13" fill="#D6E18D"></rect>
+<rect x="76" y="423" width="151" height="74" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="View Starts" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="114.859" y="465.25">View Starts</tspan></text>
+</g>
+<g id="Arrow_5">
+<path id="Line_5" d="M447 245L447 292" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_5" d="M453.345 290.805L447.175 298.805C446.971 299.069 446.571 299.064 446.375 298.794L440.545 290.794C440.304 290.464 440.54 290 440.949 290L452.949 290C453.364 290 453.598 290.477 453.345 290.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_5" cx="447" cy="239" r="5" transform="rotate(90 447 239)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="ShapeGreen_4">
+<rect x="372" y="181" width="151" height="74" rx="13" fill="#D6E18D"></rect>
+<rect x="372" y="181" width="151" height="74" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Data Layer receives data" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="413.334" y="213.25">Data Layer
+</tspan><tspan x="404.803" y="233.25">receives data</tspan></text>
+</g>
+<g id="Arrow_6">
+<path id="Line_6" d="M447 366L447 413" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_6" d="M453.345 411.805L447.175 419.805C446.971 420.069 446.571 420.064 446.375 419.794L440.545 411.794C440.304 411.464 440.54 411 440.949 411L452.949 411C453.364 411 453.598 411.477 453.345 411.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_6" cx="447" cy="360" r="5" transform="rotate(90 447 360)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="ShapeGreen_5">
+<rect x="372" y="302" width="151" height="74" rx="13" fill="#D6E18D"></rect>
+<rect x="372" y="302" width="151" height="74" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="ViewModel Receives Data" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="381.95" y="334.25">ViewModel Receives
+</tspan><tspan x="432.502" y="354.25">Data</tspan></text>
+</g>
+<g id="ShapeGreen_6">
+<rect x="372" y="423" width="151" height="74" rx="13" fill="#D6E18D"></rect>
+<rect x="372" y="423" width="151" height="74" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="View Receives Data" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="384.979" y="465.25">View Receives Data</tspan></text>
+</g>
+<g id="Device">
+<g id="ShapePattern">
+<rect x="222" y="169" width="155" height="155" rx="77.5" transform="rotate(-90 222 169)" fill="white"></rect>
+<rect x="222" y="169" width="155" height="155" rx="77.5" transform="rotate(-90 222 169)" stroke="#333333" stroke-width="2"></rect>
+<g id="Pattern">
+<path id="Line_7" d="M309.5 168.303V14.6973" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_8" d="M305.5 169.151V14.6973" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_9" d="M301.5 170V13" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_10" d="M297.5 170V13" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_11" d="M293.5 169.151V13.8487" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_12" d="M289.5 168.303V14.6973" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+</g>
+</g>
+<g id="ShapeInner">
+<rect x="238" y="68" width="123" height="43" rx="13" fill="white"></rect>
+<rect x="238" y="68" width="123" height="43" rx="13" stroke="#333333" stroke-width="2"></rect>
+<g id="ShapeInnerForeGreen">
+<rect x="243" y="73" width="113" height="33" rx="9" fill="#D6E18D"></rect>
+<rect x="243" y="73" width="113" height="33" rx="9" stroke="#333333" stroke-width="2"></rect>
+</g>
+</g>
+</g>
+</g>
+</svg>
 
-但更有效的架构是*观察*数据变化而不是持续请求它们。然后，数据源中的任何更新都会自动*流（Flow）*向视图。
+但更有效的架构是*观察*数据变化而不是持续请求它们。然后，数据源中的任何更新都会自动流（Flow）向视图。
 
-数据层观察源 ViewModel 观察数据层 视图观察 ViewModel
+<svg width="600" height="574" viewBox="0 0 600 574" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="observing_data_flow">
+<g id="Arrow">
+<path id="Line" d="M301 311L301 358" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip" d="M307.345 356.805L301.175 364.805C300.971 365.069 300.571 365.064 300.375 364.794L294.545 356.794C294.304 356.464 294.54 356 294.949 356L306.949 356C307.364 356 307.598 356.477 307.345 356.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle" cx="301" cy="305" r="5" transform="rotate(90 301 305)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="ShapeGreen">
+<rect x="226" y="247" width="151" height="74" rx="13" fill="#D6E18D"></rect>
+<rect x="226" y="247" width="151" height="74" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Data Layer observes source" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="267.334" y="279.25">Data Layer
+</tspan><tspan x="249.253" y="299.25">observes source</tspan></text>
+</g>
+<g id="Arrow_2">
+<path id="Line_2" d="M301 432L301 479" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_2" d="M307.345 477.805L301.175 485.805C300.971 486.069 300.571 486.064 300.375 485.794L294.545 477.794C294.304 477.464 294.54 477 294.949 477L306.949 477C307.364 477 307.598 477.477 307.345 477.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_2" cx="301" cy="426" r="5" transform="rotate(90 301 426)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="ShapeGreen_2">
+<rect x="226" y="368" width="151" height="74" rx="13" fill="#D6E18D"></rect>
+<rect x="226" y="368" width="151" height="74" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="ViewModel Observes Data Layer" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="234.378" y="400.25">ViewModel Observes
+</tspan><tspan x="267.334" y="420.25">Data Layer</tspan></text>
+</g>
+<g id="ShapeGreen_3">
+<rect x="226" y="489" width="151" height="74" rx="13" fill="#D6E18D"></rect>
+<rect x="226" y="489" width="151" height="74" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="View Observes ViewModel" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="254.059" y="521.25">View Observes
+</tspan><tspan x="266.124" y="541.25">ViewModel</tspan></text>
+</g>
+<g id="Device">
+<g id="ShapePattern">
+<rect x="222" y="166" width="155" height="155" rx="77.5" transform="rotate(-90 222 166)" fill="white"></rect>
+<rect x="222" y="166" width="155" height="155" rx="77.5" transform="rotate(-90 222 166)" stroke="#333333" stroke-width="2"></rect>
+<g id="Pattern">
+<path id="Line_3" d="M309.5 165.303V11.6973" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_4" d="M305.5 166.151V11.6973" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_5" d="M301.5 167V10" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_6" d="M297.5 167V10" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_7" d="M293.5 166.151V10.8487" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_8" d="M289.5 165.303V11.6973" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+</g>
+</g>
+<g id="ShapeInner">
+<rect x="238" y="65" width="123" height="43" rx="13" fill="white"></rect>
+<rect x="238" y="65" width="123" height="43" rx="13" stroke="#333333" stroke-width="2"></rect>
+<g id="ShapeInnerForeGreen">
+<rect x="243" y="70" width="113" height="33" rx="9" fill="#D6E18D"></rect>
+<rect x="243" y="70" width="113" height="33" rx="9" stroke="#333333" stroke-width="2"></rect>
+</g>
+</g>
+</g>
+<g id="Group 2">
+<g id="Arrow_3">
+<path id="Line_9" d="M414 144V182.75C414 193.658 405.158 202.5 394.25 202.5V202.5H373" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+</g>
+<g id="Arrow_4">
+<path id="Line_10" d="M414 146V107.161C414 96.3024 405.198 87.5 394.339 87.5V87.5H376" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+</g>
+<g id="Arrow_5">
+<path id="Line_11" d="M300 237L300 223.695C300 211.989 309.489 202.5 321.195 202.5V202.5L376 202.5" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+</g>
+</g>
+<g id="Group 3">
+<g id="Arrow_6">
+<path id="Line_12" d="M186 144V182.75C186 193.658 194.842 202.5 205.75 202.5V202.5H227" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+</g>
+<g id="Arrow_7">
+<path id="Line_13" d="M186 146V107.161C186 96.3024 194.802 87.5 205.661 87.5V87.5H212" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+<path id="Tip_3" d="M210.805 81.6553L218.805 87.8251C219.069 88.0287 219.064 88.4288 218.794 88.6251L210.794 94.4549C210.464 94.6957 210 94.4597 210 94.0508V82.0512C210 81.6361 210.477 81.4017 210.805 81.6553Z" fill="white" stroke="#333333" stroke-width="2"></path>
+</g>
+<g id="Arrow_8">
+<path id="Line_14" d="M300 237L300 223.695C300 211.989 290.511 202.5 278.805 202.5V202.5L224 202.5" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+</g>
+</g>
+<g id="Group 1">
+<g id="Arrow_9">
+<path id="Line_15" d="M300 237L300 223.695C300 211.989 290.511 202.5 278.805 202.5V202.5L224 202.5" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+<path id="Tip_4" d="M306.345 235.805L300.175 243.805C299.971 244.069 299.571 244.064 299.375 243.794L293.545 235.794C293.304 235.464 293.54 235 293.949 235L305.949 235C306.364 235 306.598 235.477 306.345 235.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+</g>
+</g>
+</g>
+</svg>
 
 这种类型的系统称为*响应式（reactive）*，因为观察者会自动对被观察事物的变化做出反应。这里值得注意的另一个重要设计模式是数据只向一个方向流动。这种单向数据流是一种称为 **MVI** 的设计模式。MVI，即“模型-视图-意图（Model-View-Intent）”，侧重于单向数据流和不可变性（Immutability）。
 
@@ -304,7 +507,7 @@ androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-ru
 
 构建并运行。在文本输入区域键入内容，然后点击发送按钮或键盘上的发送图标（它位于右下角，看起来像一个纸飞机）。你的文本消息现在应该会更新 UI，先添加虚拟数据，然后是你键入的任何消息！
 
- ![](./Android Fundamentals by Tutorials, Chapter 6_Advanced Jetpack Compose_ Kodeco_files/original.png)
+![picture 0](images/623ade201ef39956af1dc629691bb87e2680ff0e171e71c84b762eb090a7143a.png)
 
 这很棒，但有些地方你可以改进，而且这仍然是一个单向对话。首先，请注意，当你发送聊天时，UI 显示的聊天消息来自非“我”的角色，而不是来自“我”。
 
@@ -484,7 +687,7 @@ _messages.add(0, messageUIModel)
 
 构建并运行。向聊天中添加新消息，直到消息列表超出 UI 中显示的内容。向上滚动，“跳转到底部”按钮就会出现。
 
- ![](./Android Fundamentals by Tutorials, Chapter 6_Advanced Jetpack Compose_ Kodeco_files/original(1).png)
+![picture 1](images/25790bf05649dafab3d674ab021851ea5443a5584b6a1effb5553915295ac265.png)
 
 点击按钮，消息列表就会滚动到底部！
 
