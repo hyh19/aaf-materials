@@ -1,4 +1,4 @@
-# Jetpack Compose 高级应用：状态管理与架构模式
+# 《6. 高级 Jetpack Compose》总结
 
 ## 核心概述
 
