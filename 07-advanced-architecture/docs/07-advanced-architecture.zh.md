@@ -71,7 +71,7 @@ import live.ditto.transports.DittoSyncPermissions
 
 然后，通过在函数末尾调用 `checkPermissions()` 来更新 `onCreate()`。构建并运行。
 
- ![](./Android Fundamentals by Tutorials, Chapter 7_Advanced Architecture_ Kodeco_files/original(3).png)
+![picture 4](../../images/54b2c21a615c5111f96cf13e4352a12c7e01520ce2373a5680c0c65716d8cbd7.png)  
 
 当应用启动时，在创建 UI 后，它应该会显示权限弹出屏幕。点击 **Allow** 以启用权限。
 
@@ -418,7 +418,7 @@ import live.ditto.DittoDocument
 
 构建并运行。输入一些聊天消息。现在，接下来是令人震惊的部分！在*第二台*设备或模拟器上构建并运行。你在第一台设备上输入的聊天消息会出现在第二台设备上。在第二台设备上输入一些消息...它们会立即出现在你运行应用的*所有*设备上。
 
- ![](./Android Fundamentals by Tutorials, Chapter 7_Advanced Architecture_ Kodeco_files/original(4).png)
+![picture 5](../../images/ccebbd8a750dbf152dbf503fc8aa28b0f578fdba3a26d8c8d7b7d69897fade47.png)  
 
 尝试在任意多台设备上运行。
 
