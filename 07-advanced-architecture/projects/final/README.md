@@ -1,14 +1,15 @@
 # Kodeco Chat 应用
 
-这是一个使用 Jetpack Compose 构建的 Android 聊天应用示例项目。
+这是一个使用 Jetpack Compose 构建的 Android 聊天应用示例项目，使用 Ditto 作为实时数据同步解决方案。
 
 ## 环境要求
 
 - Android Studio Hedgehog（2023.1.1）或更高版本
 - Android SDK 34（compileSdk = 34，targetSdk = 34，minSdk = 30）
 - Kotlin 1.9.10
-- JDK 17
+- JDK 17（必需，其他版本可能导致构建失败）
 - Gradle 8.2
+- Ditto SDK
 
 ## 配置项目
 
@@ -33,7 +34,14 @@
      export ANDROID_HOME=/Users/<用户名>/Library/Android/sdk
      ```
 
-4. 等待 Gradle 同步完成。
+4. 在项目根目录创建 `keys.properties` 文件，并添加 Ditto 配置：
+
+   ```properties
+   DITTO_APP_ID="your_ditto_app_id"
+   DITTO_TOKEN="your_ditto_token"
+   ```
+
+5. 等待 Gradle 同步完成。
 
 ## 构建项目
 
@@ -65,16 +73,14 @@
 
 ### 使用命令行运行
 
-1. 启动模拟器（如果尚未运行）：
+1. 启动模拟器：
 
    ```bash
-   ~/Library/Android/sdk/emulator/emulator -avd <模拟器名称>
-   ```
-
-   例如：
-
-   ```bash
-   ~/Library/Android/sdk/emulator/emulator -avd Pixel_3a_API_34_extension_level_7_arm64-v8a
+   # 先检查可用的模拟器
+   ~/Library/Android/sdk/emulator/emulator -list-avds
+   
+   # 启动指定的模拟器（使用 -read-only 标志避免多实例问题）
+   ~/Library/Android/sdk/emulator/emulator -avd Pixel_3a_API_34_extension_level_7_arm64-v8a -read-only
    ```
 
 2. 构建并安装应用：
@@ -95,22 +101,65 @@
 - Compose Material 3（1.1.2）
 - Coil Compose（2.4.0）- 图片加载
 - KotlinX DateTime（0.4.0）- 日期时间处理
+- Ditto SDK - 实时数据同步
 
 ## 常见问题解决
 
-### 找不到 Android SDK 的位置
+### JDK 版本不兼容
 
-确保正确设置了 `local.properties` 文件或 `ANDROID_HOME` 环境变量。
+确保使用 JDK 17：
+
+```bash
+# 在 macOS 上安装 JDK 17
+brew install openjdk@17
+
+# 创建系统级符号链接
+sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
+
+# 设置 JAVA_HOME（可添加到 ~/.bash_profile 或 ~/.zshrc）
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+```
+
+### 模拟器多实例问题
+
+如果遇到以下错误：
+
+```
+ERROR   | Running multiple emulators with the same AVD 
+ERROR   | is an experimental feature.
+ERROR   | Please use -read-only flag to enable this feature.
+```
+
+解决方案：
+
+1. 先关闭所有正在运行的模拟器实例：
+
+   ```bash
+   adb devices && adb emu kill
+   ```
+
+2. 使用 `-read-only` 标志启动模拟器：
+
+   ```bash
+   ~/Library/Android/sdk/emulator/emulator -avd <模拟器名称> -read-only
+   ```
+
+### Ditto 配置问题
+
+如果遇到 Ditto 相关的构建错误，请确保：
+
+1. `keys.properties` 文件存在且包含有效的 Ditto 凭证
+2. 凭证格式正确（使用双引号包裹值）
+3. 构建配置正确读取了凭证
 
 ### Gradle 构建失败
 
-尝试在项目根目录下运行：
+尝试清理项目后重新构建：
 
 ```bash
 ./gradlew clean
+./gradlew installDebug
 ```
-
-然后重新构建项目。
 
 ### 模拟器列表为空
 
@@ -131,7 +180,7 @@
 - `MainActivity`：应用程序的入口点
 - `conversation`：包含聊天会话相关的组件和状态管理
 - `components`：包含可重用的 UI 组件
-- `data`：包含应用程序的数据模型和假数据
+- `data`：包含应用程序的数据模型和 Ditto 数据同步逻辑
 - `theme`：包含应用程序的主题和样式定义
 - `ui.theme`：包含 UI 主题相关定义
 - `utilities`：包含实用工具和扩展函数
