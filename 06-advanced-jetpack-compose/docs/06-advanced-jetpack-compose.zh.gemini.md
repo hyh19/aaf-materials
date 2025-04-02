@@ -505,7 +505,7 @@ androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-ru
 
 构建并运行。在文本输入区域键入内容，然后点击发送按钮或键盘上的发送图标（它位于右下角，看起来像一个纸飞机）。你的文本消息现在应该会更新 UI，先添加虚拟数据，然后是你键入的任何消息！
 
-![picture 0](images/623ade201ef39956af1dc629691bb87e2680ff0e171e71c84b762eb090a7143a.png)
+![picture 0](../../images/623ade201ef39956af1dc629691bb87e2680ff0e171e71c84b762eb090a7143a.png)
 
 这很棒，但有些地方你可以改进，而且这仍然是一个单向对话。首先，请注意，当你发送聊天时，UI 显示的聊天消息来自非“我”的角色，而不是来自“我”。
 
@@ -685,7 +685,7 @@ _messages.add(0, messageUIModel)
 
 构建并运行。向聊天中添加新消息，直到消息列表超出 UI 中显示的内容。向上滚动，“跳转到底部”按钮就会出现。
 
-![picture 1](images/25790bf05649dafab3d674ab021851ea5443a5584b6a1effb5553915295ac265.png)
+![picture 1](../../images/25790bf05649dafab3d674ab021851ea5443a5584b6a1effb5553915295ac265.png)
 
 点击按钮，消息列表就会滚动到底部！
 
