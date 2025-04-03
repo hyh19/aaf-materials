@@ -81,6 +81,7 @@
   ```mermaid
   classDiagram
       Repository <|-- RepositoryImpl
+      RepositoryImpl -- Companion
       
       class Repository {
           +getDittoSdkVersion() String
@@ -118,12 +119,10 @@
           -addPrivateRoomSubscriptions(roomId String, collectionId String, messagesId String) void
       }
       
-      class "RepositoryImpl.Companion" {
+      class Companion {
           -instance RepositoryImpl?
           +getInstance() RepositoryImpl
       }
-      
-      RepositoryImpl -- "RepositoryImpl.Companion"
   ```
 
 - **继承关系**：实现了 Repository 接口
@@ -287,6 +286,7 @@
   - 使用双重检查锁定优化性能
   - 使用 `?.` 和 `?:` 进行空安全处理
   - 使用 `also` 函数在赋值同时执行额外操作
+  - 在类图中，Companion 类与 RepositoryImpl 类通过关联关系连接
 
 ## Kotlin 语法分析
 
