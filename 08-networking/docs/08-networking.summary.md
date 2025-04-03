@@ -1,4 +1,4 @@
-# Android 网络编程指南摘要
+# 《8. 网络》总结
 
 ## 文字摘要
 
@@ -79,6 +79,7 @@ moshiCodeGen = {module="com.squareup.moshi:moshi-kotlin-codegen", version.ref="m
 #### 状态管理
 
 文章详细介绍了使用 Flow 进行状态管理的方法：
+
 - 在 ViewModel 中使用 `MutableStateFlow` 维护内部状态
 - 对外暴露只读版本 `StateFlow`
 - UI 组件通过 `collect` 或 `collectAsState` 接收状态更新
