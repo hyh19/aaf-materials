@@ -54,12 +54,12 @@
   | getDittoSdkVersion | 无 | String | 获取 Ditto SDK 版本号 |
   | getAllPublicRooms | 无 | Flow<List<ChatRoom>> | 获取所有公共聊天室的响应式数据流 |
   | getAllMessagesForRoom | chatRoom: ChatRoom | Flow<List<Message>> | 获取特定聊天室所有消息的响应式数据流 |
-  | createMessageForRoom | userId: String, message: Message, chatRoom: ChatRoom, attachment: DittoAttachment? | suspend | 在指定聊天室创建新消息，支持附件 |
-  | addUser | user: User | suspend | 添加新用户到系统 |
+  | createMessageForRoom | userId: String, message: Message, chatRoom: ChatRoom, attachment: DittoAttachment? | Unit | 在指定聊天室创建新消息，支持附件 |
+  | addUser | user: User | Unit | 添加新用户到系统 |
   | getAllUsers | 无 | Flow<List<User>> | 获取所有用户的响应式数据流 |
-  | saveCurrentUser | userId: String, firstName: String, lastName: String | suspend | 保存当前用户信息 |
-  | createRoom | name: String, isPrivate: Boolean = false, userId: String = "Ditto System" | suspend | 创建新的聊天室，支持公共或私有设置 |
-  | publicRoomForId | roomId: String | suspend ChatRoom | 根据 ID 获取公共聊天室 |
+  | saveCurrentUser | userId: String, firstName: String, lastName: String | Unit | 保存当前用户信息 |
+  | createRoom | name: String, isPrivate: Boolean = false, userId: String = "Ditto System" | Unit | 创建新的聊天室，支持公共或私有设置 |
+  | publicRoomForId | roomId: String | ChatRoom | 根据 ID 获取公共聊天室 |
 
 - **接口 UML 图**：
   
@@ -69,15 +69,15 @@
           +getDittoSdkVersion() String
           +getAllPublicRooms() Flow~List~ChatRoom~~
           +getAllMessagesForRoom(chatRoom ChatRoom) Flow~List~Message~~
-          +createMessageForRoom(userId String, message Message, chatRoom ChatRoom, attachment DittoAttachment?)* void
-          +addUser(user User)* void
+          +createMessageForRoom(userId String, message Message, chatRoom ChatRoom, attachment DittoAttachment?)\* void
+          +addUser(user User)\* void
           +getAllUsers() Flow~List~User~~
-          +saveCurrentUser(userId String, firstName String, lastName String)* void
-          +createRoom(name String, isPrivate Boolean, userId String)* void
-          +publicRoomForId(roomId String)* ChatRoom
+          +saveCurrentUser(userId String, firstName String, lastName String)\* void
+          +createRoom(name String, isPrivate Boolean, userId String)\* void
+          +publicRoomForId(roomId String)\* ChatRoom
       }
       
-      note for Repository "* 表示 suspend 函数"
+      note for Repository "\* 表示 suspend 函数"
   ```
 
 - **依赖关系**：
