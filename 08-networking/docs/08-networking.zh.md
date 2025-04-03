@@ -10,11 +10,11 @@
 
 注意底部的两个选项卡——当你点击它们时，每个选项卡显示不同的屏幕。"Recipes"（菜谱）选项卡如下所示：
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original.png)
+![1743666000773](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743665998332.png)
 
 "Groceries"（食材）选项卡如下所示：
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(1).png)
+![1743666027499](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743666024804.png)
 
 完成后，你可以搜索菜谱，将它们显示在网格中，收藏你想保留的菜谱，并显示这些餐点所需的食材清单。
 
@@ -24,7 +24,7 @@
 
 Kotlin 有用于协程的 **kotlinx.coroutines** 库。欲了解更多详情，请参阅：[https://kotlinlang.org/docs/coroutines-guide.html](https://kotlinlang.org/docs/coroutines-guide.html)。协程就像迷你线程。你可以使用数千个而不会引起任何问题（与线程不同）。Kotlin 使用 `suspend` 关键字将函数标记为异步。如果你想调用一个挂起函数，你必须要么在另一个挂起函数中，要么使用协程构建器启动一个。最常见的是 `launch` 方法。这个方法来自 CoroutineScope。如果你见过 Android 的 `ViewModel`，你会注意到它有自己内置的 `viewModelScope`。如果你查看 `viewModelScope` 代码：
 
-```
+```kotlin
 public val ViewModel.viewModelScope: CoroutineScope
     // 1
     get() {
@@ -51,7 +51,7 @@ public val ViewModel.viewModelScope: CoroutineScope
 
 看一下 `launch` 方法：
 
-```
+```kotlin
 public fun CoroutineScope.launch(
     context: CoroutineContext = EmptyCoroutineContext,
     start: CoroutineStart = CoroutineStart.DEFAULT,
@@ -63,7 +63,7 @@ public fun CoroutineScope.launch(
 
 通常，你会在 ViewModel 中这样使用 `launch`：
 
-```
+```kotlin
 viewModelScope.launch {
   ...
 }
@@ -75,19 +75,19 @@ viewModelScope.launch {
 
 要添加协程库，请在 **Gradle** 目录中打开 **libs.versions.toml** 文件。在 **versions** 部分下，添加：
 
-```
+```toml
 kotlinx-coroutines = "1.7.2"
 ```
 
 然后，在 **libraries** 部分末尾，添加：
 
-```
+```toml
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 ```
 
 打开应用模块的 **build.gradle.kts** 并在 **dependencies** 部分添加以下内容：
 
-```
+```kotlin
 implementation(libs.coroutines.android)
 ```
 
@@ -97,20 +97,20 @@ implementation(libs.coroutines.android)
 
 大多数 Android 开发者已经使用 LiveData 库一段时间了。它提供了一种通知 UI 事件的方式，并处理 Android 生命周期。新秀是 **Flows**。与 LiveData 一样，你将在 ViewModel 中创建一个可变流，但仅暴露一个不可变版本。这里是一个例子：
 
-```
+```kotlin
 private val _queryState = MutableStateFlow(QueryState())
 val queryState = _queryState.asStateFlow()
 ```
 
 私有的 `_queryState` 是一个可以改变的状态。UI 将监听 `queryState`。要监听事件，你可以这样做：
 
-```
+```kotlin
 val uiState by viewModel.uiState.collectAsState()
 ```
 
 如果你想对状态变化采取行动，你可以像这样 `collect` 状态变化：
 
-```
+```kotlin
 val scope = rememberCoroutineScope()
 LaunchedEffect(Unit) {
     scope.launch {
@@ -146,13 +146,13 @@ Retrofit 通过创建接口并使用注解工作。然后，一个构建器使�
 
 要添加 Retrofit 库，请在 **Gradle** 目录中打开 **libs.versions.toml** 文件。在 **versions** 部分下，添加：
 
-```
+```toml
 retrofit="2.9.0"
 ```
 
 然后，在 **libraries** 部分，添加：
 
-```
+```toml
 # Retrofit
 retrofit = {module="com.squareup.retrofit2:retrofit", version.ref="retrofit" }
 ```
@@ -161,7 +161,7 @@ retrofit = {module="com.squareup.retrofit2:retrofit", version.ref="retrofit" }
 
 打开应用模块的 **build.gradle.kts** 并在 **dependencies** 部分添加以下内容：
 
-```
+```kotlin
 implementation(libs.retrofit)
 ```
 
@@ -177,20 +177,20 @@ implementation(libs.retrofit)
 
 在 **versions** 部分下，添加：
 
-```
+```toml
 moshi="1.15.0"
 ```
 
 在 **libraries** 部分，添加：
 
-```
+```toml
 moshi-kotlin = {module="com.squareup.moshi:moshi-kotlin", version.ref="moshi" }
 retrofit-moshi-converter = {module="com.squareup.retrofit2:converter-moshi", version.ref="retrofit" }
 ```
 
 打开应用模块的 **build.gradle.kts** 并在 **dependencies** 部分添加以下内容：
 
-```
+```kotlin
 implementation(libs.moshi.kotlin)
 implementation(libs.retrofit.moshi.converter)
 ```
@@ -253,13 +253,13 @@ implementation(libs.retrofit.moshi.converter)
 
 在项目侧边栏中，右键点击 **main/java/com/kodeco/recipefinder/data/models**，创建一个新的 Kotlin 文件并命名为 **SearchRecipesResponse.kt**。文件打开后，导入以下内容：
 
-```
+```kotlin
 import com.squareup.moshi.Json
 ```
 
 然后，添加数据类：
 
-```
+```kotlin
 data class SearchRecipesResponse(
   val offset: Int,
   val number: Int,
@@ -273,7 +273,7 @@ data class SearchRecipesResponse(
 
 接下来，打开名为 **SpoonacularService.kt** 的 Kotlin 文件。导入以下内容：
 
-```
+```kotlin
 import com.kodeco.recipefinder.data.models.RecipeInformationResponse
 import com.kodeco.recipefinder.data.models.SearchRecipesResponse
 import com.kodeco.recipefinder.viewmodels.PAGE_SIZE
@@ -288,7 +288,7 @@ import retrofit2.http.Query
 
 然后，添加：
 
-```
+```kotlin
 const val apiKey = "<Replace with API Key>"
 ```
 
@@ -303,7 +303,7 @@ const val apiKey = "<Replace with API Key>"
 
 添加：
 
-```
+```kotlin
 interface SpoonacularService {
    // 1
   @GET("recipes/complexSearch?&apiKey=$apiKey")
@@ -328,7 +328,7 @@ interface SpoonacularService {
 
 注意你将 API Key 放入 URL 中，第二个调用使用 `{id}` 在 URL 中替换 ID。要创建 Retrofit 的实例，你需要一些方法来使用 Retrofit 构建器。在 **SpoonacularService.kt** 中添加以下内容：
 
-```
+```kotlin
 object RetrofitInstance {
   // 1
   private const val BASE_URL = "https://api.spoonacular.com/"
@@ -368,19 +368,19 @@ object RetrofitInstance {
 
 现在你已经编写了服务，你必须检索与查询字符串匹配的菜谱列表。打开 **viewmodels/RecipeViewModel.kt**。找到 `// TODO: Add Service` 并替换为：
 
-```
+```kotlin
 private val spoonacularService = RetrofitInstance.spoonacularService
 ```
 
 导入：
 
-```
+```kotlin
 import com.kodeco.recipefinder.network.RetrofitInstance
 ```
 
 这会给你一个服务实例。替换 `// TODO: query recipes` 为：
 
-```
+```kotlin
 viewModelScope.launch {
   try {
     // 1
@@ -407,7 +407,7 @@ viewModelScope.launch {
 
 导入以下内容：
 
-```
+```kotlin
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -415,7 +415,7 @@ import timber.log.Timber
 
 UI 监听菜谱列表状态（`recipeListState` 变量）。当有新列表可用时，菜谱列表状态通知 UI，UI 相应地更新。通过打开 **RecipeList.kt** 文件来检查这一点：
 
-```
+```kotlin
 scope.launch {
   viewModel.recipeListState.collect { state ->
     recipeListState.value = state
@@ -453,26 +453,26 @@ scope.launch {
 
 要启用这个功能，在 **Gradle** 目录中打开 **libs.versions.toml** 文件，并在 **libraries** 部分替换：
 
-```
+```toml
 moshi-kotlin = {module="com.squareup.moshi:moshi-kotlin", version.ref="moshi" }
 ```
 
 替换为以下内容：
 
-```
+```toml
 moshi = {module="com.squareup.moshi:moshi", version.ref="moshi" }
 moshiCodeGen = {module="com.squareup.moshi:moshi-kotlin-codegen", version.ref="moshi" }
 ```
 
 接下来，打开应用模块的 **build.gradle.kts** 文件，并在 **dependencies** 部分替换：
 
-```
+```kotlin
 implementation(libs.moshi.kotlin)
 ```
 
 替换为以下内容：
 
-```
+```kotlin
 implementation(libs.moshi)
 ksp (libs.moshiCodeGen)
 ```
@@ -481,7 +481,7 @@ ksp (libs.moshiCodeGen)
 
 你不再需要 `KotlinJsonAdapterFactory`，所以打开 **SpoonacularService.kt** 并将 `provideMoshi()` 更新为以下内容：
 
-```
+```kotlin
 private fun provideMoshi(): Moshi =
   Moshi
     .Builder()
@@ -490,13 +490,13 @@ private fun provideMoshi(): Moshi =
 
 同时，删除以下导入：
 
-```
+```kotlin
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 ```
 
 最后，你必须为所有你想要转换为 JSON 的类添加注解。打开 **SearchRecipesResponse.kt** 并添加 `@JsonClass` 注解：
 
-```
+```kotlin
 @JsonClass(generateAdapter = true)
 data class SearchRecipesResponse(
   val offset: Int,
@@ -509,7 +509,7 @@ data class SearchRecipesResponse(
 
 同时，导入这个：
 
-```
+```kotlin
 import com.squareup.moshi.JsonClass
 ```
 
@@ -525,7 +525,7 @@ import com.squareup.moshi.JsonClass
 
 打开 **RecipeViewModel.kt**。替换 `// TODO: Query a Recipe` 为：
 
-```
+```kotlin
 // 1
 viewModelScope.launch(Dispatchers.Default) {
   try {
@@ -548,7 +548,7 @@ viewModelScope.launch(Dispatchers.Default) {
 
 你需要导入这个：
 
-```
+```kotlin
 import kotlinx.coroutines.Dispatchers
 ```
 
