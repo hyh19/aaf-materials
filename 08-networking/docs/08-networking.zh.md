@@ -201,43 +201,43 @@ implementation(libs.retrofit.moshi.converter)
 
 点击右上角的 **Start Now** 按钮创建一个帐户。
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(2).png)
+![1743666490688](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743666488906.png)  
 
 填写电子邮件和密码，然后点击复选框接受条款和条件。最后，点击 **Sign up** 按钮。使用免费套餐完成该过程。
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(3).png)
+![1743666514295](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743666512533.png)  
 
 你将看到以下内容：
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(4).png)
+![1743666532537](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743666531071.png)  
 
 确认电子邮件后，点击此链接并登录。
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(5).png)
+![1743666554656](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743666553019.png)  
 
 你会看到 API 控制台。一旦你开始发出请求，你会看到图表填满。
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(6).png)
+![1743666572883](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743666571378.png)  
 
 现在，转到文档：
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(7).png)
+![1743666588755](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743666587094.png)  
 
 在这里，你可以看到搜索菜谱的文档：
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(8).png)
+![1743666608620](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743666606081.png)  
 
 如果你向下滚动，你可以看到许多返回的字段。但你对大多数这些并不感兴趣。
 
 你看到 **path** 和你将要进行的 `GET` 请求可用参数列表。
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(9).png)
+![1743666627454](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743666625625.png)  
 
 这个页面上的 API 信息比你的应用需要的要多得多，所以你可能想把它收藏起来以备将来使用。
 
 点击 **My Console**，然后点击 **Profile** 部分：
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(10).png)
+![1743666652244](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743666650728.png)  
 
 点击 **Show/Hide API Key**。复制 API Key 并将其保存在安全的地方。
 
@@ -427,23 +427,23 @@ scope.launch {
 
 通过按下**播放**按钮在设备或模拟器上运行应用。
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(11).png)
+![1743667092370](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743667090735.png)  
 
 你会看到类似的内容：
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(12).png)
+![1743667109367](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743667104760.png)  
 
 在搜索栏中输入查询（如 Sushi）：
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(13).png)
+![1743667119196](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743667117280.png)  
 
 现在，按下**搜索**图标：
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(14).png)
+![1743667128311](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743667126860.png)  
 
 进度指示器旋转一段时间后，你会看到一些菜谱：
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(15).png)
+![1743667143508](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743667141487.png)  
 
 > 如果你没有看到任何菜谱，请确保你在 **SpoonacularService.kt** 文件中有 API Key。
 
@@ -554,11 +554,11 @@ import kotlinx.coroutines.Dispatchers
 
 通过按下**重新播放**按钮重新运行应用。点击一个菜谱查看详情：
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(16).png)
+![1743667290514](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743667288316.png)  
 
 如果你按下**书签**或**返回箭头**图标，你将返回到菜谱列表。
 
- ![](./Android Fundamentals by Tutorials, Chapter 8_Networking_ Kodeco_files/original(17).png)
+![1743667308742](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743667307272.png)  
 
 ## 要点
 
