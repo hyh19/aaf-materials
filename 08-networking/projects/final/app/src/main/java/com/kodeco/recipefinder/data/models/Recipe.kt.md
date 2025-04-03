@@ -122,6 +122,7 @@
 ## 跨平台开发考虑
 
 - **Flutter**：可使用 Dart 类和 json_serializable 实现类似功能
+
   ```dart
   class Recipe {
     final int id;
@@ -134,7 +135,9 @@
     Map<String, dynamic> toJson() => _$RecipeToJson(this);
   }
   ```
+
 - **iOS/Swift**：可使用 Swift 结构体和 Codable 协议实现类似功能
+
   ```swift
   struct Recipe: Codable {
     let id: Int
@@ -142,11 +145,13 @@
     let image: String?
   }
   ```
+
 - **React/TypeScript**：可使用 TypeScript 接口实现类似定义
+
   ```typescript
   interface Recipe {
     id: number;
     title: string;
     image?: string;
   }
-  ``` 
+  ```

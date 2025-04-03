@@ -118,4 +118,4 @@
 
 - **Flutter**：可使用 Dart 的数据类和 json_serializable 包实现类似功能
 - **iOS**：可使用 Swift struct 和 Codable 协议实现类似功能
-- **React Native**：可使用 TypeScript 接口和类型定义实现类似功能 
+- **React Native**：可使用 TypeScript 接口和类型定义实现类似功能

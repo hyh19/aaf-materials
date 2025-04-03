@@ -165,6 +165,7 @@ flowchart TD
 ## 跨平台开发考虑
 
 - **Flutter**：可使用 Dart 类和 json_serializable 包实现类似功能
+
   ```dart
   class SearchRecipesResponse {
     final int offset;
@@ -184,7 +185,9 @@ flowchart TD
       _$SearchRecipesResponseFromJson(json);
   }
   ```
+
 - **iOS/Swift**：可使用 Swift 结构体和 Codable 协议实现类似功能
+
   ```swift
   struct SearchRecipesResponse: Codable {
     let offset: Int
@@ -200,7 +203,9 @@ flowchart TD
     }
   }
   ```
+
 - **React/TypeScript**：可使用 TypeScript 接口实现类似定义
+
   ```typescript
   interface SearchRecipesResponse {
     offset: number;
@@ -218,4 +223,4 @@ flowchart TD
       recipes: data.results
     };
   };
-  ``` 
+  ```
