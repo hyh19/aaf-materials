@@ -1,7 +1,6 @@
 ---
 description: 分析 Android 项目 Kotlin 文件
 globs: 
-alwaysApply: false
 ---
 # Android 项目 Kotlin 文件分析
 
@@ -215,8 +214,8 @@ alwaysApply: false
 
   | API 名称 | 用途 | 文档链接 | 类似 iOS/Flutter API |
   |---------|------|---------|------------------|
-  | API 1   | 用途说明 | [链接](https://example.com) | UIKit 中的... / Flutter 中的... |
-  | API 2   | 用途说明 | [链接](https://example.com) | SwiftUI 中的... / Dart 中的... |
+  | API 1   | 用途说明 | [链接](mdc:https:/example.com) | UIKit 中的... / Flutter 中的... |
+  | API 2   | 用途说明 | [链接](mdc:https:/example.com) | SwiftUI 中的... / Dart 中的... |
 
 - **第三方库**：分析使用的第三方库及其用途
   - 与 iOS/Flutter 生态系统中类似库的对比
