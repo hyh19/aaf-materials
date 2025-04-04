@@ -153,6 +153,7 @@ NavHost 是 Android 应用中的一个特殊容器，专门用于在不同页面
 在 Android 开发中，NavHost 是 Jetpack Navigation 组件的关键元素，它实现了 NavHost 接口。在 Compose 中，NavHost 是一个组合函数，它接收一个 NavController 和一个起始目的地，然后在其代码块中定义所有可能的导航目的地。
 
 NavHost 的主要职责是：
+
 1. 跟踪当前应显示哪个目的地
 2. 当导航控制器请求导航时，替换当前目的地
 3. 协调目的地之间的过渡
@@ -172,7 +173,7 @@ NavHost 通过与 Navigation Graph（导航图）配合，了解应用的导航�
 
 如果你想深入了解 NavHost，建议查阅以下资源：
 
-1. Android 官方文档中的 Navigation 组件指南：https://developer.android.com/guide/navigation
-2. Jetpack Compose Navigation 文档：https://developer.android.com/jetpack/compose/navigation
+1. Android 官方文档中的 Navigation 组件指南：<https://developer.android.com/guide/navigation>
+2. Jetpack Compose Navigation 文档：<https://developer.android.com/jetpack/compose/navigation>
 
-记住，NavHost 与 NavHostController 密切配合，共同构成了 Android 导航系统的核心。只有理解这两个组件如何协作，才能掌握 Android 导航的全貌。 
+记住，NavHost 与 NavHostController 密切配合，共同构成了 Android 导航系统的核心。只有理解这两个组件如何协作，才能掌握 Android 导航的全貌。

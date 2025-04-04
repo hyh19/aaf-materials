@@ -139,7 +139,7 @@ NavHostController 是应用内页面导航的管理者，它记录你在应用�
 
 如果你想深入了解 NavHostController，建议查阅：
 
-1. Android 官方文档中的 Navigation 组件指南：https://developer.android.com/guide/navigation
-2. Jetpack Compose Navigation 的官方文档：https://developer.android.com/jetpack/compose/navigation
+1. Android 官方文档中的 Navigation 组件指南：<https://developer.android.com/guide/navigation>
+2. Jetpack Compose Navigation 的官方文档：<https://developer.android.com/jetpack/compose/navigation>
 
-记住，NavHostController 只是 Android 导航系统的一部分。理解整个导航框架将帮助你更好地掌握它的作用和用法。 
+记住，NavHostController 只是 Android 导航系统的一部分。理解整个导航框架将帮助你更好地掌握它的作用和用法。
