@@ -1,4 +1,4 @@
-# MainActivity.kt 分析报告
+# MainActivity.kt 文件分析报告
 
 ## 文件基本信息
 
@@ -167,6 +167,7 @@
 #### Jetpack Compose 基础
 
 Jetpack Compose 是 Android 现代化的声明式 UI 工具包：
+
 - 使用 Kotlin 编写
 - 声明式而非命令式 UI
 - 组件化、响应式设计
@@ -282,4 +283,4 @@ MainActivity/
 - **跨平台开发考虑**：
   - 在 React Native 中需要自定义原生模块支持导航交互
   - Flutter 可通过 MethodChannel 与原生导航交互
-  - 设计时需考虑跨平台统一的导航状态管理 
+  - 设计时需考虑跨平台统一的导航状态管理
