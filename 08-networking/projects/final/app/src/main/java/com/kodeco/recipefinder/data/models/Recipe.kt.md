@@ -1,4 +1,4 @@
-# Recipe.kt 文件分析
+# Recipe.kt 文件分析报告
 
 ## 文件基本信息
 
