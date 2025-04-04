@@ -22,7 +22,7 @@
 
 本章的目标是展示一个之前输入的搜索字符串菜单，让用户可以重新选择搜索。即使用户重启应用，这些内容也会显示。第二个目标是恢复当前选择的屏幕。例如，如果用户正在查看杂货屏幕，如果他们在长时间后回来并且应用重启，他们希望返回到之前所在的屏幕。以下是主屏幕的样子：
 
- ![](./Android Fundamentals by Tutorials, Chapter 9_Data Store_ Kodeco_files/original.png)
+![1743750953544](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743750950149.png)
 
 #### SharedPreferences
 
@@ -319,7 +319,7 @@ RecipeViewModel(prefs)
 
 对于预览代码，使用给定的上下文创建一个新的 Prefs 类。如果你有任何问题，可以预览最终项目。现在，重启应用。进行搜索，比如"chicken"，然后点击三点菜单，查看搜索是否已保存。
 
- ![](./Android Fundamentals by Tutorials, Chapter 9_Data Store_ Kodeco_files/original(1).png)
+![1743751910038](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743751907753.png)
 
 现在，停止应用并重启。验证列表是否为空。为什么会这样？你尚未编写加载偏好设置的代码。
 
