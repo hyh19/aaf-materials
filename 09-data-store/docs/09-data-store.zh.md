@@ -49,7 +49,7 @@ Android 有一个内置接口，名为 **SharedPreferences**，它在每个版�
 
 除了 `clear()` 方法外，所有这些方法都使用 **key** 来访问项目。通过给库提供一个唯一的键，你可以存储、检索和删除特定项目。这里是一个例子：
 
-```
+```kotlin
 // 1
 val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
 // 2
@@ -78,7 +78,7 @@ if (sharedPreferences.contains("MyKey")) {
 
 Google 一直在转向使用外部库而不是仅仅更新系统。这一策略为他们提供了灵活性，可以频繁推出对库的修改，用户可以立即访问这些修改。他们没有更新系统中的 **SharedPreferences** 代码，而是创建了一个名为 **DataStore** 的新库。这是一个用于存储键/值对的现代库。DataStore 库使用 **DataStore** 接口，设计略有不同。如果你查看定义，它相当简单：
 
-```
+```kotlin
 interface DataStore<T> {
   val data: Flow<T>
   suspend fun updateData(transform: suspend (t: T) -> T): T
@@ -87,7 +87,7 @@ interface DataStore<T> {
 
 要创建一个名为 `dataStore` 的变量：
 
-```
+```kotlin
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 ```
 
@@ -95,13 +95,13 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 
 要访问条目，你使用字符串键，就像旧系统一样，但首先必须围绕键创建一个变量。如果你尝试检索字符串值，你可以使用：
 
-```
+```kotlin
 val prefKey = stringPreferencesKey("MyKey")
 ```
 
 该库还使用 Kotlin 的更现代的 Flow 类，来自协程库。要检索值，你可以执行：
 
-```
+```kotlin
 context.dataStore.data.first()[prefKey]
 ```
 
@@ -113,20 +113,20 @@ context.dataStore.data.first()[prefKey]
 
 如果你正在跟随前几章的应用程序，请打开它并继续使用。如果没有，只需找到本章的 **projects** 文件夹，在 Android Studio 中打开 **starter**。打开 **gradle/libs.versions.toml**。在 **versions** 部分末尾添加：
 
-```
+```toml
 prefsVersion = "1.0.0"
 ```
 
 然后在 **\[libraries\]** 部分末尾添加：
 
-```
+```toml
 # Preferences
 prefs = {module = "androidx.datastore:datastore-preferences", version.ref = "prefsVersion" }
 ```
 
 执行 gradle 同步。在 **app/build.gradle.kts** 中的 timber 库后添加：
 
-```
+```kotlin
 implementation(libs.prefs)
 ```
 
@@ -138,7 +138,7 @@ implementation(libs.prefs)
 
 首先，转到 **app/src/main/java/com/kodeco/recipefinder/data** 目录，创建一个名为 **Prefs.kt** 的新 Kotlin 文件。添加以下内容：
 
-```
+```kotlin
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -160,13 +160,13 @@ class Prefs(val context: Context) {
 
 现在将 `// TODO: Add dataStore` 替换为：
 
-```
+```kotlin
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "recipes")
 ```
 
 这与示例类似，但你将文件命名为"recipes"。接下来，将 `// TODO: Add saveString` 替换为：
 
-```
+```kotlin
 // 1
 suspend fun saveString(key: String, value: String) {
   // 2
@@ -186,7 +186,7 @@ suspend fun saveString(key: String, value: String) {
 
 现在将 `// TODO: Add getString` 替换为：
 
-```
+```kotlin
 suspend fun getString(key: String): String? {
   val prefKey = stringPreferencesKey(key)
   return context.dataStore.data.first()[prefKey]
@@ -197,7 +197,7 @@ suspend fun getString(key: String): String? {
 
 替换接下来的两个 TODO：
 
-```
+```kotlin
 suspend fun saveInt(key: String, value: Int) {
   val prefKey = intPreferencesKey(key)
   context.dataStore.edit { prefs ->
@@ -212,7 +212,7 @@ suspend fun getInt(key: String): Int? {
 
 这些方法与获取/保存字符串的方法相同，但针对 Int 类型。最后，替换 `// TODO: Add hasKey` 为：
 
-```
+```kotlin
 suspend fun hasKey(key: String): Boolean {
   val prefKey = stringPreferencesKey(key)
   return context.dataStore.data.first().contains(prefKey)
@@ -223,32 +223,32 @@ suspend fun hasKey(key: String): Boolean {
 
 首先打开 **RecipeApp.kt**。找到 `// TODO: Add Prefs` 并替换为：
 
-```
+```kotlin
 lateinit var prefs: Prefs
 ```
 
 现在，找到下一个 `// TODO: Add Prefs` 并替换为：
 
-```
+```kotlin
 prefs = Prefs(this)
 ```
 
 你现在已经设置了 `Prefs` 的实例，是时候使用它了。打开 **MainActivity.kt** 并替换 `// TODO: Add Pref Provider` 为：
 
-```
+```kotlin
 val LocalPrefsProvider =
     compositionLocalOf<Prefs> { error("No prefs provided") }
 ```
 
 这使用了 Compose 的提供者能力。导入所需的导入。注意，虽然这一开始会有错误，但你稍后会设置提供者。接下来，替换 `// TODO: Add Prefs` 为：
 
-```
+```kotlin
 val prefs = remember { Prefs(context) }
 ```
 
 在 `LocalNavigatorProvider provides navController` 之后添加：
 
-```
+```kotlin
 LocalPrefsProvider provides (application as RecipeApp).prefs,
 ```
 
@@ -258,13 +258,13 @@ LocalPrefsProvider provides (application as RecipeApp).prefs,
 
 现在你已经编写了 Prefs 类，你想要将其提供给你的视图模型以便能够保存数据。打开 **RecipeViewModel.kt**，在 `// TODO: Add Prefs` 处，修改构造函数以包含 prefs。构造函数应该看起来像：
 
-```
+```kotlin
 class RecipeViewModel(private val prefs: Prefs) : ViewModel() {
 ```
 
 在 `savePreviousSearches()` 方法中找到 `// TODO: Save previous searches` 并替换为：
 
-```
+```kotlin
 viewModelScope.launch {
   val searchString = _uiState.value.previousSearches.joinToString(",")
   prefs.saveString(PREVIOUS_SEARCH_KEY, searchString)
@@ -273,7 +273,7 @@ viewModelScope.launch {
 
 这从 ui 状态中获取之前搜索的列表，并创建一个长字符串（用逗号分隔）。然后使用 prefs 类和 `PREVIOUS_SEARCH_KEY` 作为键保存字符串。要更新之前搜索的列表，找到 `addPreviousSearch` 方法并添加：
 
-```
+```kotlin
 // 1
 if (!_uiState.value.previousSearches.contains(searchString)) {
   val updatedSearches = mutableListOf<String>()
@@ -294,13 +294,13 @@ if (!_uiState.value.previousSearches.contains(searchString)) {
 
 如果你现在尝试运行，你会在 **RecipeDetails** 中看到一个错误。打开它并找到 `// TODO: Add Prefs*`。添加：
 
-```
+```kotlin
 val prefs = LocalPrefsProvider.current
 ```
 
 这使用了之前定义的 **LocalPrefsProvider**。现在只需使用它的 `current` 版本。将视图模型的工厂更新为：
 
-```
+```kotlin
 RecipeViewModel(prefs)
 ```
 
@@ -325,7 +325,7 @@ RecipeViewModel(prefs)
 
 重新打开 **RecipeViewModel** 并替换 `// TODO: Retrieve previous searches` 为：
 
-```
+```kotlin
 viewModelScope.launch {
   val previousSearchString = prefs.getString(PREVIOUS_SEARCH_KEY)
   if (!previousSearchString.isNullOrEmpty()) {
@@ -341,13 +341,13 @@ viewModelScope.launch {
 
 在本节中，你将使用共享偏好设置来保存用户已导航到的当前 UI 标签。打开 **ui/MainScreen.kt**。首先获取 prefs 类的实例。将 `// TODO: Add Prefs` 替换为：
 
-```
+```kotlin
 val prefs = LocalPrefsProvider.current
 ```
 
 接下来，替换 `// TODO: Get screen position from prefs` 为：
 
-```
+```kotlin
 val currentIndex = prefs.getInt(CURRENT_INDEX_KEY)
 if (currentIndex != null) {
   selectedIndex.intValue = currentIndex
@@ -356,7 +356,7 @@ if (currentIndex != null) {
 
 这将获取标签的当前索引，如果存在，将设置 selectedIndex.value。接下来，替换 `// TODO: Save screen position to prefs` 为：
 
-```
+```kotlin
 scope.launch {
   prefs.saveInt(CURRENT_INDEX_KEY, 0)
 }
@@ -364,7 +364,7 @@ scope.launch {
 
 这通过在协程作用域中运行（因为这需要异步完成）来保存索引。最后，替换下一个 TODO 为：
 
-```
+```kotlin
 scope.launch {
   prefs.saveInt(CURRENT_INDEX_KEY, 1)
 }
