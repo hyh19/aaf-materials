@@ -347,4 +347,4 @@ flowchart TD
 - **替代方案**：
   - 使用 LiveData 代替 StateFlow（传统 Android 做法）
   - 使用 MVI 架构结合 Redux 实现更严格的单向数据流
-  - 考虑 DataStore 或 Room 数据库持久化存储历史搜索和书签 
+  - 考虑 DataStore 或 Room 数据库持久化存储历史搜索和书签

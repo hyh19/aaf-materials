@@ -213,4 +213,4 @@ flowchart TD
 - **替代方案**：
   - 使用 LiveData 代替 StateFlow（较传统的 Android 方法）
   - 使用 Redux 或 MVI 架构实现不可变状态管理
-  - 考虑使用 Room 数据库持久化储存清单项 
+  - 考虑使用 Room 数据库持久化储存清单项
