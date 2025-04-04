@@ -13,7 +13,7 @@ NavHostController 负责执行导航操作，它持有导航状态并控制导�
 - 如何处理导航回退
 - 如何管理导航历史堆栈
 
-在 Android 架构中，NavHostController 位于导航组件的核心位置，它连接导航图(Navigation Graph)和导航宿主(NavHost)，使整个导航流程协调一致地工作。
+在 Android 架构中，NavHostController 位于导航组件的核心位置，它连接导航图（Navigation Graph）和导航宿主（NavHost），使整个导航流程协调一致地工作。
 
 ## 类比与比喻
 
@@ -23,7 +23,7 @@ NavHostController 负责执行导航操作，它持有导航状态并控制导�
 
 ### 类比二：列车调度员
 
-NavHostController 也像火车站的调度员。他掌握着整个站点的列车运行图，决定哪趟列车（Fragment或Composable）应该进入哪个站台，什么时候出发，以及如何处理乘客（数据）的转乘。当用户需要从一个屏幕移动到另一个屏幕时，NavHostController 就会像调度员一样，安排这次"旅程"。
+NavHostController 也像火车站的调度员。他掌握着整个站点的列车运行图，决定哪趟列车（Fragment 或 Composable）应该进入哪个站台，什么时候出发，以及如何处理乘客（数据）的转乘。当用户需要从一个屏幕移动到另一个屏幕时，NavHostController 就会像调度员一样，安排这次"旅程"。
 
 ### 类比三：遥控器
 
@@ -48,7 +48,7 @@ Button(onClick = { navController.navigate("profile") }) {
 ```kotlin
 // 定义导航操作
 Button(onClick = { 
-    // 跳转到商品详情页并传递商品ID
+    // 跳转到商品详情页并传递商品 ID
     navController.navigate("productDetail/123") 
 }) {
     Text("查看商品详情")
@@ -92,7 +92,7 @@ Button(onClick = {
     // 跳转到嵌套导航图中的项目详情页
     navController.navigate("items/detail/456") {
         // 配置导航选项
-        popUpTo("home") // 弹出回退栈直到home页面
+        popUpTo("home") // 弹出回退栈直到 home 页面
         launchSingleTop = true // 避免目标页面的多个实例
         restoreState = true // 恢复目标页面的状态
     }
@@ -104,7 +104,7 @@ Button(onClick = {
 ### 反例：不当使用方式
 
 ```kotlin
-// ❌ 错误：直接操作Activity或Fragment，绕过NavController
+// ❌ 错误：直接操作 Activity 或 Fragment，绕过 NavController
 Button(onClick = {
     // 不要这样做！这会破坏导航组件的统一管理
     val intent = Intent(context, ProfileActivity::class.java)
@@ -174,43 +174,43 @@ NavHostController 不仅仅是执行简单的页面切换，它还能：
 
 在高级应用中，NavHostController 可以：
 
-- 与SavedStateHandle结合，在进程死亡后恢复导航状态
+- 与 SavedStateHandle 结合，在进程死亡后恢复导航状态
 - 实现自定义的导航行为和转场动画
-- 与ViewModel协同工作，确保在导航过程中数据的一致性
-- 管理多个回退栈，支持底部导航等复杂UI模式
+- 与 ViewModel 协同工作，确保在导航过程中数据的一致性
+- 管理多个回退栈，支持底部导航等复杂 UI 模式
 
 ## 术语解释
 
 - **导航图（Navigation Graph）**：定义应用中所有可能的导航路径和目的地的可视化表示
-- **导航宿主（NavHost）**：显示导航目的地的容器，通常是一个Fragment容器或Composable函数
-- **导航目的地（Navigation Destination）**：应用中的一个屏幕，如一个Fragment或Composable函数
+- **导航宿主（NavHost）**：显示导航目的地的容器，通常是一个 Fragment 容器或 Composable 函数
+- **导航目的地（Navigation Destination）**：应用中的一个屏幕，如一个 Fragment 或 Composable 函数
 - **回退栈（Back Stack）**：记录用户访问过的屏幕历史，使回退操作能够正常工作
 - **导航动作（Navigation Action）**：从一个目的地到另一个目的地的连接，可以包含参数和选项
-- **深层链接（Deep Link）**：允许直接导航到应用内特定页面的URI
+- **深层链接（Deep Link）**：允许直接导航到应用内特定页面的 URI
 
 ## 历史与发展
 
-NavHostController 是随着 Jetpack Navigation 组件在2018年推出的，作为现代Android应用导航解决方案的一部分。它的设计目标是统一Android应用的导航系统，解决过去使用Intent、FragmentTransaction等不同机制导致的导航混乱问题。
+NavHostController 是随着 Jetpack Navigation 组件在 2018 年推出的，作为现代 Android 应用导航解决方案的一部分。它的设计目标是统一 Android 应用的导航系统，解决过去使用 Intent、FragmentTransaction 等不同机制导致的导航混乱问题。
 
-随着Jetpack Compose的推出，NavHostController也得到了扩展，支持声明式UI的导航需求。现在的NavHostController可以同时支持基于Fragment的传统视图和基于Compose的现代声明式UI导航。
+随着 Jetpack Compose 的推出，NavHostController 也得到了扩展，支持声明式 UI 的导航需求。现在的 NavHostController 可以同时支持基于 Fragment 的传统视图和基于 Compose 的现代声明式 UI 导航。
 
 ## 常见误解澄清
 
-### 误解1：NavHostController 和 NavController 是不同的东西
+### 误解 1：NavHostController 和 NavController 是不同的东西
 
 **澄清**：NavHostController 实际上是 NavController 的一个实现类。在大多数情况下，开发者直接使用 NavController 接口，而不需要关心它的具体实现。
 
-### 误解2：每个页面都需要一个新的 NavController
+### 误解 2：每个页面都需要一个新的 NavController
 
 **澄清**：一个应用通常只需要一个 NavController 实例来管理整个应用的导航。在 Compose 中，我们通常使用 `rememberNavController()` 在顶层组件中创建一个实例，然后通过参数传递给需要的组件。
 
-### 误解3：NavController 只能用于简单的页面跳转
+### 误解 3：NavController 只能用于简单的页面跳转
 
 **澄清**：NavController 支持复杂的导航场景，包括嵌套导航、条件导航、动态导航以及深层链接等高级功能。
 
 ## 代码示例
 
-### 示例1：基本设置与使用（初级）
+### 示例 1：基本设置与使用（初级）
 
 ```kotlin
 // 在 Compose 中设置基本导航
@@ -242,7 +242,7 @@ fun HomeScreen(navController: NavController) {
 }
 ```
 
-### 示例2：带参数和选项的导航（中级）
+### 示例 2：带参数和选项的导航（中级）
 
 ```kotlin
 // 定义导航图，包含参数和导航选项
@@ -292,7 +292,7 @@ fun ArticleListScreen(navController: NavController) {
 }
 ```
 
-### 示例3：复杂导航架构（高级）
+### 示例 3：复杂导航架构（高级）
 
 ```kotlin
 @Composable
@@ -359,7 +359,7 @@ fun ComplexNavigationApp() {
                 BottomNavigationItem(
                     selected = /* ... */,
                     onClick = { 
-                        // 使用NavController导航到顶级目的地
+                        // 使用 NavController 导航到顶级目的地
                         navController.navigate("main/feed") {
                             // 弹出回退栈直到主导航图
                             popUpTo("main") {
@@ -377,7 +377,7 @@ fun ComplexNavigationApp() {
             }
         }
     ) {
-        // NavHost已在上面定义
+        // NavHost 已在上面定义
     }
 }
 ```
