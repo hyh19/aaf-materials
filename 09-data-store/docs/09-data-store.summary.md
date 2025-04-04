@@ -137,6 +137,7 @@ fun MainScreen() {
 ### 与传统视图系统对比
 
 相比传统的 SharedPreferences，DataStore 有以下优势：
+
 - 基于 Kotlin 协程，所有操作都是异步的，避免主线程阻塞
 - 使用 Flow API 提供响应式数据访问
 - 提供类型安全的数据访问方式
@@ -189,4 +190,4 @@ flowchart LR
     E --> E3["与 ViewModel 集成"]
     E --> E4["适当的协程作用域"]
     E --> E5["类型安全的键"]
-``` 
+```

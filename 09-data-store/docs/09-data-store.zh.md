@@ -388,4 +388,4 @@ scope.launch {
 
 要了解 **DataStore**，请访问 [https://developer.android.com/topic/libraries/architecture/datastore](https://developer.android.com/topic/libraries/architecture/datastore)。
 
-在下一章中，你将学习使用 Room 在数据库中存储数据。下次见！ 
+在下一章中，你将学习使用 Room 在数据库中存储数据。下次见！
