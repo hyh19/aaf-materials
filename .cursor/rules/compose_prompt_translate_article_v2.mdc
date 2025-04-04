@@ -3,7 +3,7 @@ description: 翻译 Jetpack Compose 英文文章
 globs:
 alwaysApply: false
 ---
-# Jetpack Compose 英文文章翻译指令
+# Jetpack Compose 英文文章翻译
 
 ## 任务描述
 
@@ -17,6 +17,7 @@ alwaysApply: false
   - 代码和输出结果保留英文原样，不翻译
   - 代码注释需要翻译成中文，保持技术准确性
   - 翻译注释时保持原注释的缩进和格式
+  - 保留或添加代码块的语言标记（如：```kotlin、```java、```xml 等）
 - Jetpack Compose 专业术语处理：
   - 使用中文 Android/Compose 社区或官方认可的术语翻译
   - 无官方中文翻译时保留英文原词（如："Compose"、"Modifier" 等）
