@@ -1008,7 +1008,7 @@ interface IngredientDao {
 
 在 **data/database** 包中创建一个名为 **RecipeDatabase.kt** 的 Kotlin 文件，并将内容替换为以下内容：
 
-```
+```kotlin
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -1091,7 +1091,7 @@ abstract class RecipeDatabase : RoomDatabase() {
 
 在 **data** 包中创建一个名为 **RecipeRepository.kt** 的 Kotlin 文件，并将内容替换为以下内容：
 
-```
+```kotlin
 import com.kodeco.recipefinder.data.database.IngredientDao
 import com.kodeco.recipefinder.data.database.IngredientDb
 import com.kodeco.recipefinder.data.database.RecipeDao
@@ -1186,7 +1186,7 @@ class RecipeRepository(recipeDatabase: RecipeDatabase) {
 
 接下来，打开 **RecipeViewModel.kt**。找到 `// TODO: Add Repository` 并用以下内容更新 ViewModel 的构造函数：
 
-```
+```kotlin
 class RecipeViewModel(
   private val prefs: Prefs,
   private val repository: RecipeRepository,
@@ -1197,7 +1197,7 @@ class RecipeViewModel(
 
 现在，找到 `// TODO: get Bookmarks`。请注意，你将这些称为书签，即使它们是食谱。这是因为你在给食谱添加书签。用以下内容替换该方法：
 
-```
+```kotlin
 suspend fun getBookmarks() {
   withContext(Dispatchers.IO) {
     val allRecipes = repository.findAllRecipes()
@@ -1208,7 +1208,7 @@ suspend fun getBookmarks() {
 
 你必须导入一些类。这将在 IO 协程调度器上运行调用，确保它在后台运行。使用传递给 ViewModel 构造函数的仓库，查找所有已添加书签的食谱并更新书签状态（这通知 UI 变化）。对 `getIngredients()` 方法做同样的事情：
 
-```
+```kotlin
 suspend fun getIngredients() {
   withContext(Dispatchers.IO) {
     val allIngredients = repository.findAllIngredients()
@@ -1221,7 +1221,7 @@ suspend fun getIngredients() {
 
 要获取书签，将 `// TODO: Get Bookmark` 替换为：
 
-```
+```kotlin
 suspend fun getBookmark(bookmarkId: Int) {
   withContext(Dispatchers.IO) {
     val recipe = repository.findRecipeById(bookmarkId)
@@ -1236,7 +1236,7 @@ suspend fun getBookmark(bookmarkId: Int) {
 
 要保存单个书签，将 `bookmarkRecipe()` 方法替换为：
 
-```
+```kotlin
 suspend fun bookmarkRecipe(recipe: RecipeInformationResponse) {
   withContext(Dispatchers.IO) {
     repository.insertRecipe(recipeInformationToRecipeDb(recipe))
@@ -1254,7 +1254,7 @@ suspend fun bookmarkRecipe(recipe: RecipeInformationResponse) {
 
 要删除食谱，找到第一个 `// TODO: Delete Bookmark` 并将该方法替换为：
 
-```
+```kotlin
 suspend fun deleteBookmark(recipe: Recipe) {
   withContext(Dispatchers.IO) {
     // 1
@@ -1280,7 +1280,7 @@ suspend fun deleteBookmark(recipe: Recipe) {
 
 找到下一个 `// TODO: Delete Bookmark`。这是删除书签的另一种方式。如果你只有食谱 ID 而不是食谱本身，这个方法就能派上用场。将该方法替换为：
 
-```
+```kotlin
 suspend fun deleteBookmark(recipeId: Int) {
   withContext(Dispatchers.IO) {
     repository.deleteRecipeById(recipeId)
@@ -1302,13 +1302,13 @@ suspend fun deleteBookmark(recipeId: Int) {
 
 现在你已经设置了仓库的使用，是时候创建它了。就像 `RecipeApp` 中创建 `Prefs` 实例的方式一样，你将创建一个新的 `RecipeRepository` 实例。首先打开 `RecipeApp` 并找到第一个 `// TODO: Add Repository` 注释。用以下内容替换该注释：
 
-```
+```kotlin
 lateinit var repository: RecipeRepository
 ```
 
 添加 `RecipeRepository` 的导入。现在，找到第二个 `// TODO: Add Repository` 注释并用以下内容替换：
 
-```
+```kotlin
 repository = RecipeRepository(
   Room.databaseBuilder(
     this,
@@ -1324,7 +1324,7 @@ repository = RecipeRepository(
 
 很多类使用仓库。你如何向 UI 中的所有可组合项提供该仓库呢？通过使用本地提供者概念。这是一种向其他可组合项提供类的方法。你将在更高级别的可组合项中创建类，并使用本地提供者来提供该实例。打开 **MainActivity.kt** 并在 `LocalNavigatorProvider` 全局变量之后添加：
 
-```
+```kotlin
 val LocalRepositoryProvider =
     compositionLocalOf<RecipeRepository> { error("No repository provided") }
 ```
@@ -1333,13 +1333,13 @@ val LocalRepositoryProvider =
 
 你需要导入：
 
-```
+```kotlin
 import com.kodeco.recipefinder.data.RecipeRepository
 ```
 
 找到 `// TODO: Add LocalRepositoryProvider` 并用以下内容替换：
 
-```
+```kotlin
 LocalRepositoryProvider provides (application as RecipeApp).repository,
 ```
 
@@ -1351,7 +1351,7 @@ LocalRepositoryProvider provides (application as RecipeApp).repository,
 
 现在是时候更新 **ui/recipes/ShowBookmarks.kt** 文件了。找到 `// TODO: Provide current item` 注释并用以下内容替换其下方的方法调用：
 
-```
+```kotlin
 viewModel.deleteBookmark(currentItem)
 ```
 
@@ -1359,31 +1359,31 @@ viewModel.deleteBookmark(currentItem)
 
 要更新的最后一个文件是 **ui/RecipeDetails.kt**。找到第一个 `// TODO: Add Repository` 并用以下内容替换：
 
-```
+```kotlin
 val repository = LocalRepositoryProvider.current
 ```
 
 并导入 `LocalRepositoryProvider`。然后，用以下内容替换 `RecipeViewModel` 工厂实例化：
 
-```
+```kotlin
 RecipeViewModel(prefs, repository)
 ```
 
 找到 `// TODO: Provide recipe ID` 并用以下内容替换其下方的方法调用：
 
-```
+```kotlin
 viewModel.getBookmark(databaseRecipeId)
 ```
 
 再往下，找到下一个 `// TODO: Provide recipe ID` 并用以下内容替换：
 
-```
+```kotlin
  viewModel.deleteBookmark(recipe.id)
 ```
 
 以便使用给定的食谱 ID 删除书签。找到下一个 `// TODO: Provide recipe` 并用以下内容替换：
 
-```
+```kotlin
 viewModel.bookmarkRecipe(recipe)
 ```
 
@@ -1398,7 +1398,7 @@ viewModel.bookmarkRecipe(recipe)
 
 找到 `// TODO: Add Repository` 并添加：
 
-```
+```kotlin
 val repository = LocalRepositoryProvider.current
 ```
 
@@ -1406,7 +1406,7 @@ val repository = LocalRepositoryProvider.current
 
 这获取当前仓库。现在，用以下内容更新 `RecipeViewModel` 实例化：
 
-```
+```kotlin
 RecipeViewModel(prefs, repository)
 ```
 
@@ -1421,13 +1421,13 @@ RecipeViewModel(prefs, repository)
 
 在每个文件底部的相关预览方法中查找 `// TODO: Add Repository` 注释，并用以下内容替换：
 
-```
+```kotlin
 val repository = LocalRepositoryProvider.current
 ```
 
 添加 `LocalRepositoryProvider` 的导入。然后，用以下内容更新 `RecipeViewModel` 实例化：
 
-```
+```kotlin
 RecipeViewModel(prefs, repository)
 ```
 
@@ -1447,7 +1447,7 @@ RecipeViewModel(prefs, repository)
 
 如果你点击底部的杂货按钮，你会看到没有杂货。要修复这个问题，打开 **ui/groceries/GroceryList.kt**。找到 `// TODO: Get Ingredients` 并用以下内容替换：
 
-```
+```kotlin
 scope.launch {
   recipeViewModel.getIngredients()
 }
@@ -1455,7 +1455,7 @@ scope.launch {
 
 这检索当前的配料列表。如果你查看上面的代码：
 
-```
+```kotlin
 scope.launch {
   recipeViewModel.ingredientsState.collect { ingredients ->
     groceryListViewModel.setIngredients(ingredients)
