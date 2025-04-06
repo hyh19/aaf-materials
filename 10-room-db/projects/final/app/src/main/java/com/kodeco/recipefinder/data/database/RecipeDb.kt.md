@@ -151,4 +151,4 @@ classDiagram
 
 - **替代方案**：
   - 可以使用 SQLDelight 或 ObjectBox 等其他持久化方案
-  - 可以使用 Serializable 代替 Parcelable，但性能较低 
+  - 可以使用 Serializable 代替 Parcelable，但性能较低
