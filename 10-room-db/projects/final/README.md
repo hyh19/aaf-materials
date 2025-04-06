@@ -1,6 +1,6 @@
 # Kodeco 食谱查找应用
 
-这是一个使用 Jetpack Compose 构建的 Android 食谱查找应用示例项目，展示了如何使用现代 Android 开发技术构建美观且功能完整的应用程序。
+这是一个使用 Jetpack Compose 构建的 Android 食谱查找应用示例项目，展示了如何使用现代 Android 开发技术构建美观且功能完整的应用程序。该项目重点展示了 Room 数据库在 Android 应用中的实现，用于本地存储和管理食谱数据。
 
 ## 环境要求
 
@@ -133,7 +133,7 @@
    sleep 10 && ./gradlew clean installDebug
    ```
 
-   注意：构建过程中可能会看到一些警告，如未使用的变量，这些不影响应用运行。
+   注意：构建过程中可能会看到一些警告，如 KSP 版本与 Kotlin 版本不匹配的警告，这些不影响应用运行。
 
 5. 启动应用：
 
@@ -151,10 +151,27 @@
 - Coil Compose 2.4.0 - 图片加载
 - Retrofit 2.9.0 - 网络请求
 - Moshi 1.15.0 - JSON 解析
-- Coroutines 1.7.2 - 异步编程
+- Kotlin Coroutines 1.7.2 - 异步编程
 - Navigation Compose 2.7.2 - 导航组件
 - Datastore Preferences 1.0.0 - 数据存储
+- Room 2.5.2 - 本地数据库
 - Timber 5.0.1 - 日志工具
+
+## Room 数据库实现
+
+项目使用 Room 持久性库实现本地数据存储：
+
+- `RecipeDatabase` - 主数据库类，定义数据库结构和版本
+- `RecipeDao` - 数据访问对象，提供食谱相关的 CRUD 操作
+- `IngredientDao` - 数据访问对象，提供配料相关的 CRUD 操作
+- `Recipe` 和 `Ingredient` - 数据实体类，表示数据库表
+
+Room 数据库实现包括以下主要组件：
+
+- 实体关系：食谱与配料之间的一对多关系
+- 类型转换器：处理复杂数据类型的存储
+- 数据访问模式：使用仓储模式（Repository Pattern）封装数据操作
+- 异步查询：利用协程和 Flow 进行异步数据操作
 
 ## 常见问题解决
 
@@ -172,6 +189,19 @@ sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/Java
 # 设置 JAVA_HOME（可添加到 ~/.bash_profile 或 ~/.zshrc）
 export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 ```
+
+### KSP 与 Kotlin 版本不匹配
+
+可能会看到以下警告：
+
+```
+ksp-1.9.0-1.0.13 is too old for kotlin-1.9.10. Please upgrade ksp or downgrade kotlin-gradle-plugin to 1.9.0
+```
+
+这是由于 KSP（Kotlin Symbol Processing）插件版本（1.9.0-1.0.13）与项目使用的 Kotlin 版本（1.9.10）不完全匹配导致的。这个警告通常不影响应用的构建和运行，但如果想消除警告，可以考虑：
+
+1. 在 `gradle/libs.versions.toml` 文件中升级 KSP 版本
+2. 或降级 Kotlin 版本到 1.9.0
 
 ### 模拟器多实例问题
 
@@ -224,11 +254,14 @@ ERROR   | Please use -read-only flag to enable this feature.
 
 - `MainActivity`：应用程序的入口点，负责导航设置
 - `RecipeApp`：应用程序类，提供应用级别的依赖
-- `MainScreen`：主屏幕，显示食谱列表
-- `RecipeDetails`：食谱详情页面
 - `ui/`：包含所有 UI 组件和屏幕
+  - `MainScreen`：主屏幕，显示食谱列表
+  - `RecipeDetails`：食谱详情页面
 - `viewmodels/`：包含用于管理 UI 状态的 ViewModel
 - `data/`：包含应用程序的数据模型和首选项存储
+  - `models/`：数据实体类
+  - `database/`：Room 数据库实现
+  - `RecipeRepository`：数据仓储层，协调网络和本地数据
 - `network/`：包含网络请求和 API 相关代码
 - `utils/`：包含实用工具和扩展函数
 
