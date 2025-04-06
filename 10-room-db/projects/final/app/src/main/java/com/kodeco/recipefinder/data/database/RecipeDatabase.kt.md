@@ -194,4 +194,4 @@ flowchart TD
 
 - **替代方案**：
   - 可以使用 Dagger/Hilt 依赖注入框架提供数据库实例
-  - 可以使用其他持久化方案如 Realm 或 ObjectBox 
+  - 可以使用其他持久化方案如 Realm 或 ObjectBox
