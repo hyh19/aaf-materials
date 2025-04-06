@@ -372,13 +372,13 @@ Room 是一组名为 **Android 架构组件**的更大库的一部分。其他�
 
 打开 **libs.versions.toml** 文件添加 Room 库。在 **versions** 部分的末尾，添加：
 
-```
+```kotlin
 room="2.5.2"
 ```
 
 然后，在 **libraries** 部分的末尾，添加：
 
-```
+```kotlin
 # Room
 room = { module= "androidx.room:room-ktx", version.ref="room" }
 room-runtime ={ module= "androidx.room:room-runtime", version.ref="room" }
@@ -387,7 +387,7 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref="room" }
 
 最后，打开应用模块的 **build.gradle.kts** 文件并添加：
 
-```
+```kotlin
 id("kotlin-parcelize")
 ```
 
@@ -395,7 +395,7 @@ id("kotlin-parcelize")
 
 然后，在 **dependencies** 部分，添加：
 
-```
+```kotlin
 // Room
 implementation(libs.room)
 implementation(libs.room.runtime)
@@ -798,7 +798,7 @@ Recipe Finder 需要两种实体类型来存储食谱：`RecipeDb` 和 `Ingredie
 
 在 **data** 包中创建一个名为 **database** 的包。在这个包中，创建一个名为 **RecipeDb.kt** 的 Kotlin 文件，并将内容替换为以下内容：
 
-```
+```kotlin
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -867,7 +867,7 @@ data class RecipeDb(
 
 在 **data/database** 包中创建一个名为 **IngredientDb.kt** 的 Kotlin 文件，并将内容替换为以下内容：
 
-```
+```kotlin
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -905,7 +905,7 @@ data class IngredientDb(
 
 在 **data/database** 包中创建一个名为 **RecipeDao.kt** 的 Kotlin 文件，并将内容替换为以下内容：
 
-```
+```kotlin
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -970,7 +970,7 @@ interface RecipeDao {
 
 在 **data/database** 包中创建一个名为 **IngredientDao.kt** 的 Kotlin 文件，并将内容替换为以下内容：
 
-```
+```kotlin
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
