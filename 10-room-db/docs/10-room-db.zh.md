@@ -419,7 +419,7 @@ abstract class RecipeDatabase : RoomDatabase() {
 >
 > 通过将 **RecipeDao.kt** 中的一个 @Query 字符串中的 `recipes` 更改为 `recipe` 来测试这一点。注意 Android Studio 会将其标记为错误。如果你尝试构建项目，它会产生一个编译错误，内容为："查询存在问题：\[SQLITE\_ERROR\] SQL 错误或缺少数据库（没有这样的表：recipe）"。
 >
-> 如果你曾经在 Room 可用之前使用过 Android SQLite 数据库，你会意识到这有多么有用。Room 提供了一个安全网，防止 SQL 语句中的常见拼写错误。 
+> 如果你曾经在 Room 可用之前使用过 Android SQLite 数据库，你会意识到这有多么有用。Room 提供了一个安全网，防止 SQL 语句中的常见拼写错误。
 
 #### 创建仓库
 
@@ -825,4 +825,4 @@ scope.launch {
 
 要了解有关 Room 的更多信息，请访问：[https://developer.android.com/training/data-storage/room](https://developer.android.com/training/data-storage/room)。
 
-在下一章中，你将学习高级存储技术。我们再见！ 
+在下一章中，你将学习高级存储技术。我们再见！
