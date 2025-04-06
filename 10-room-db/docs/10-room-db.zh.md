@@ -1433,13 +1433,13 @@ RecipeViewModel(prefs, repository)
 
 最后，你已经准备好测试并确保你的应用程序正常工作。运行应用程序并搜索你喜欢的食物。点击图像进入详情，然后点击书签图标：
 
- ![](./Android Fundamentals by Tutorials, Chapter 10_Room Database_ Kodeco_files/original.png)
+![1743933115367](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743933112084.png)  
 
 当你点击书签图标时，你会返回到列表。点击顶部的书签按钮：
 
- ![](./Android Fundamentals by Tutorials, Chapter 10_Room Database_ Kodeco_files/original(1).png)
+![1743933129725](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743933128143.png)  
 
- ![](./Android Fundamentals by Tutorials, Chapter 10_Room Database_ Kodeco_files/original(2).png)
+![1743933143357](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743933140510.png)  
 
 要删除书签，向左或向右滑动。要查看食谱，点击卡片。恭喜！你现在有一个功能齐全的食谱查找器应用程序，可以保存书签食谱。
 
@@ -1465,7 +1465,7 @@ scope.launch {
 
 你可以看到它正在监听配料列表的变化。重新启动应用程序并确保配料出现在杂货页面上。
 
- ![](./Android Fundamentals by Tutorials, Chapter 10_Room Database_ Kodeco_files/original(3).png)
+![1743933160770](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743933157444.png)  
 
 #### 替代方案
 
