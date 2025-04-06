@@ -29,7 +29,117 @@ Room 是谷歌在 2018 年创建的库，它在 Android 提供的内置 SQLite �
 
 下图说明了这三个组件：
 
-获取/设置属性 读取/写入实体 从数据库获取 DAOs 主应用程序代码 数据库标签 DAOs 标签 实体标签 实体 SQLite 数据库
+<svg width="600" height="682" viewBox="0 0 600 682" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="pb_room_architecture">
+<g id="Arrow">
+<path id="Line" d="M253 44V93H210.5H168" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+<circle id="Circle" cx="6" cy="6" r="5" transform="matrix(-1 0 0 1 259 38)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Arrow_2">
+<path id="Line_2" d="M168 93L168 137" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip" d="M174.345 135.805L168.175 143.805C167.971 144.069 167.571 144.064 167.375 143.794L161.545 135.794C161.304 135.464 161.54 135 161.949 135L173.949 135C174.364 135 174.598 135.477 174.345 135.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+</g>
+<g id="Arrow_3">
+<path id="Line_3" d="M131 383L131 212" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round" stroke-dasharray="2 4"></path>
+<path id="Tip_2" d="M124.655 212.195L130.825 204.195C131.029 203.931 131.429 203.936 131.625 204.206L137.455 212.206C137.696 212.536 137.46 213 137.051 213L125.051 213C124.636 213 124.402 212.523 124.655 212.195Z" fill="white" stroke="#333333" stroke-width="2"></path>
+</g>
+<g id="Arrow_4">
+<path id="Line_4" d="M364 47L364 177" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_3" d="M370.345 175.805L364.175 183.805C363.971 184.069 363.571 184.064 363.375 183.794L357.545 175.794C357.304 175.464 357.54 175 357.949 175L369.949 175C370.364 175 370.598 175.477 370.345 175.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_2" cx="364" cy="41" r="5" transform="rotate(90 364 41)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Arrow_5">
+<path id="Line_5" d="M266 428L266 506" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_4" d="M272.345 504.805L266.175 512.805C265.971 513.069 265.571 513.064 265.375 512.794L259.545 504.794C259.304 504.464 259.54 504 259.949 504L271.949 504C272.364 504 272.598 504.477 272.345 504.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_3" cx="266" cy="422" r="5" transform="rotate(90 266 422)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Shape">
+<rect x="377" y="146" width="117" height="27" rx="8" fill="white"></rect>
+<rect x="377" y="146" width="117" height="27" rx="8" stroke="#333333" stroke-width="2"></rect>
+<text id="Get/Set Properties" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="388.449" y="163.625">Get/Set Properties</tspan></text>
+</g>
+<g id="Shape_2">
+<rect x="144" y="246" width="96" height="38" rx="8" fill="white"></rect>
+<rect x="144" y="246" width="96" height="38" rx="8" stroke="#333333" stroke-width="2"></rect>
+<text id="Read/Write Entities" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="163.136" y="263.625">Read/Write
+</tspan><tspan x="172.847" y="274.625">Entities</tspan></text>
+</g>
+<g id="Shape_3">
+<rect x="231" y="105" width="96" height="38" rx="8" fill="white"></rect>
+<rect x="231" y="105" width="96" height="38" rx="8" stroke="#333333" stroke-width="2"></rect>
+<text id="Get DAOs from Database" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="241.773" y="122.625">Get DAOs from
+</tspan><tspan x="255.168" y="133.625">Database</tspan></text>
+</g>
+<g id="ShapeLightBlue">
+<rect x="109" y="11" width="307" height="48" rx="13" fill="#A6D9E2"></rect>
+<rect x="109" y="11" width="307" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Main Application Code" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="180.484" y="41">Main Application Code</tspan></text>
+</g>
+<g id="ShapeYellow">
+<rect x="109" y="380" width="307" height="48" rx="13" fill="#FFD46F"></rect>
+<rect x="109" y="380" width="307" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Database" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="227.836" y="410">Database</tspan></text>
+</g>
+<g id="Arrow_6">
+<path id="Line_6" d="M208 174L253.5 174L253.5 230.5L253.5 287" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+<path id="Tip_5" d="M246.655 285.805L252.825 293.805C253.029 294.069 253.429 294.064 253.625 293.794L259.455 285.794C259.696 285.464 259.46 285 259.051 285L247.051 285C246.636 285 246.402 285.477 246.655 285.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_4" cx="6" cy="6" r="5" transform="matrix(-4.37114e-08 1 1 4.37114e-08 202 168)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="ShapeGreen">
+<rect x="114" y="147" width="109" height="48" fill="#D6E18D"></rect>
+<rect x="114" y="147" width="109" height="48" stroke="#333333" stroke-width="2"></rect>
+<text id="Label" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="151.034" y="176.25">Label</tspan></text>
+</g>
+<g id="ShapeGreen_2">
+<rect x="109" y="152" width="109" height="48" fill="#D6E18D"></rect>
+<rect x="109" y="152" width="109" height="48" stroke="#333333" stroke-width="2"></rect>
+<text id="DAOs" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="145.959" y="181.25">DAOs</tspan></text>
+</g>
+<g id="ShapePink">
+<rect x="322" y="187" width="94" height="48" fill="#F2BCD7"></rect>
+<rect x="322" y="187" width="94" height="48" stroke="#333333" stroke-width="2"></rect>
+<text id="Label_2" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="351.534" y="216.25">Label</tspan></text>
+</g>
+<g id="ShapePink_2">
+<rect x="315" y="192" width="96" height="48" fill="#F2BCD7"></rect>
+<rect x="315" y="192" width="96" height="48" stroke="#333333" stroke-width="2"></rect>
+<text id="Entities" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="338.623" y="221.25">Entities</tspan></text>
+</g>
+<g id="ShapePink_3">
+<rect x="206" y="297" width="94" height="48" fill="#F2BCD7"></rect>
+<rect x="206" y="297" width="94" height="48" stroke="#333333" stroke-width="2"></rect>
+<text id="Label_3" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="235.534" y="326.25">Label</tspan></text>
+</g>
+<g id="ShapePink_4">
+<rect x="199" y="302" width="96" height="48" fill="#F2BCD7"></rect>
+<rect x="199" y="302" width="96" height="48" stroke="#333333" stroke-width="2"></rect>
+<text id="Entities_2" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="222.623" y="331.25">Entities</tspan></text>
+</g>
+<g id="Device">
+<g id="ShapePattern">
+<rect x="189" y="671" width="155" height="155" rx="77.5" transform="rotate(-90 189 671)" fill="white"></rect>
+<rect x="189" y="671" width="155" height="155" rx="77.5" transform="rotate(-90 189 671)" stroke="#333333" stroke-width="2"></rect>
+<g id="Pattern">
+<path id="Line_7" d="M276.5 670.303V516.697" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_8" d="M272.5 671.151V516.697" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_9" d="M268.5 672V515" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_10" d="M264.5 672V515" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_11" d="M260.5 671.151V515.849" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_12" d="M256.5 670.303V516.697" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+</g>
+</g>
+<g id="ShapeInner">
+<rect x="205" y="570" width="123" height="43" rx="13" fill="white"></rect>
+<rect x="205" y="570" width="123" height="43" rx="13" stroke="#333333" stroke-width="2"></rect>
+<g id="ShapeInnerForeYellow">
+<rect x="210" y="575" width="113" height="33" rx="9" fill="#FFD46F"></rect>
+<rect x="210" y="575" width="113" height="33" rx="9" stroke="#333333" stroke-width="2"></rect>
+<text id="Label_4" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="13" font-weight="500" letter-spacing="0em"><tspan x="217.274" y="596.375">SQLite Database</tspan></text>
+</g>
+</g>
+</g>
+</g>
+</svg>
 
 #### Room 和 Android 架构组件
 
@@ -55,7 +165,80 @@ Room 是一组名为 **Android 架构组件**的更大库的一部分。其他�
 
 架构看起来是这样的：
 
-仓库 数据访问 持久化 数据模型 UI（Compose）ViewModel
+<svg width="600" height="610" viewBox="0 0 600 610" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="db_architecture">
+<g id="Arrow">
+<path id="Line" d="M236 53L236 109" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip" d="M242.345 107.805L236.175 115.805C235.971 116.069 235.571 116.064 235.375 115.794L229.545 107.794C229.304 107.464 229.54 107 229.949 107L241.949 107C242.364 107 242.598 107.477 242.345 107.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle" cx="236" cy="47" r="5" transform="rotate(90 236 47)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Arrow_2">
+<path id="Line_2" d="M300 161L300 217" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_2" d="M306.345 215.805L300.175 223.805C299.971 224.069 299.571 224.064 299.375 223.794L293.545 215.794C293.304 215.464 293.54 215 293.949 215L305.949 215C306.364 215 306.598 215.477 306.345 215.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_2" cx="300" cy="155" r="5" transform="rotate(90 300 155)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Arrow_3">
+<path id="Line_3" d="M468 161L468 541" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_3" d="M474.345 539.805L468.175 547.805C467.971 548.069 467.571 548.064 467.375 547.794L461.545 539.794C461.304 539.464 461.54 539 461.949 539L473.949 539C474.364 539 474.598 539.477 474.345 539.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_3" cx="468" cy="155" r="5" transform="rotate(90 468 155)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Arrow_4">
+<path id="Line_4" d="M282 269L282 325" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_4" d="M288.345 323.805L282.175 331.805C281.971 332.069 281.571 332.064 281.375 331.794L275.545 323.794C275.304 323.464 275.54 323 275.949 323L287.949 323C288.364 323 288.598 323.477 288.345 323.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_4" cx="282" cy="263" r="5" transform="rotate(90 282 263)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Arrow_5">
+<path id="Line_5" d="M426 269L426 541" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_5" d="M432.345 539.805L426.175 547.805C425.971 548.069 425.571 548.064 425.375 547.794L419.545 539.794C419.304 539.464 419.54 539 419.949 539L431.949 539C432.364 539 432.598 539.477 432.345 539.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_5" cx="426" cy="263" r="5" transform="rotate(90 426 263)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Arrow_6">
+<path id="Line_6" d="M257 379L257 435" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_6" d="M263.345 433.805L257.175 441.805C256.971 442.069 256.571 442.064 256.375 441.794L250.545 433.794C250.304 433.464 250.54 433 250.949 433L262.949 433C263.364 433 263.598 433.477 263.345 433.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_6" cx="257" cy="373" r="5" transform="rotate(90 257 373)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Arrow_7">
+<path id="Line_7" d="M384 377L384 541" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_7" d="M390.345 539.805L384.175 547.805C383.971 548.069 383.571 548.064 383.375 547.794L377.545 539.794C377.304 539.464 377.54 539 377.949 539L389.949 539C390.364 539 390.598 539.477 390.345 539.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_7" cx="384" cy="371" r="5" transform="rotate(90 384 371)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Arrow_8">
+<path id="Line_8" d="M236 485L236 541" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_8" d="M242.345 539.805L236.175 547.805C235.971 548.069 235.571 548.064 235.375 547.794L229.545 539.794C229.304 539.464 229.54 539 229.949 539L241.949 539C242.364 539 242.598 539.477 242.345 539.805Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle_8" cx="236" cy="479" r="5" transform="rotate(90 236 479)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="ShapeLightBlue">
+<rect x="110" y="227" width="342" height="48" rx="13" fill="#A6D9E2"></rect>
+<rect x="110" y="227" width="342" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Repository" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="241.461" y="257">Repository</tspan></text>
+</g>
+<g id="ShapePink">
+<rect x="110" y="335" width="293" height="48" rx="13" fill="#F2BCD7"></rect>
+<rect x="110" y="335" width="293" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Data Access" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="211.805" y="365">Data Access</tspan></text>
+</g>
+<g id="ShapePurple">
+<rect x="110" y="443" width="250" height="48" rx="13" fill="#D3BDDB"></rect>
+<rect x="110" y="443" width="250" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Persistence" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="192.211" y="473">Persistence</tspan></text>
+</g>
+<g id="ShapePurple_2">
+<rect x="110" y="551" width="379" height="48" rx="13" fill="#D3BDDB"></rect>
+<rect x="110" y="551" width="379" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Data Model" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="257.977" y="581">Data Model</tspan></text>
+</g>
+<g id="ShapeYellow">
+<rect x="110" y="11" width="250" height="48" rx="13" fill="#FFD46F"></rect>
+<rect x="110" y="11" width="250" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="UI (Compose)" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="184.633" y="41">UI (Compose)</tspan></text>
+</g>
+<g id="ShapeGreen">
+<rect x="110" y="119" width="379" height="48" rx="13" fill="#D6E18D"></rect>
+<rect x="110" y="119" width="379" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="ViewModel" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="259.07" y="149">ViewModel</tspan></text>
+</g>
+</g>
+</svg>
 
 箭头代表通信和可见性线。请注意，UI 层完全独立于除 ViewModel 之外的所有其他层。ViewModel 层对 UI 层一无所知。
 
@@ -71,7 +254,108 @@ Room 是一组名为 **Android 架构组件**的更大库的一部分。其他�
 
 将架构想象成一个多层蛋糕。你有没有见过有人一次吃一层蛋糕？这有点奇怪！同样，你不会一次构建一层应用程序。你会一次取一片。每一片可能会穿过所有层，你慢慢构建最终产品。
 
-UI（Compose）ViewModel 仓库 数据访问 持久化（Room）数据模型 架构蛋糕 一次一片
+<svg width="600" height="425" viewBox="0 0 600 425" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="db_architecture_cake">
+<g id="ShapeYellow">
+<rect x="11" y="45" width="192" height="48" fill="#FFD46F"></rect>
+<rect x="11" y="45" width="192" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeGreen">
+<rect x="11" y="93" width="192" height="48" fill="#D6E18D"></rect>
+<rect x="11" y="93" width="192" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue">
+<rect x="11" y="141" width="192" height="48" fill="#A6D9E2"></rect>
+<rect x="11" y="141" width="192" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeRed">
+<rect x="11" y="285" width="192" height="48" fill="#F7B39C"></rect>
+<rect x="11" y="285" width="192" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapePurple">
+<rect x="11" y="237" width="192" height="48" fill="#D3BDDB"></rect>
+<rect x="11" y="237" width="192" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapePink">
+<rect x="11" y="189" width="192" height="48" fill="#F2BCD7"></rect>
+<rect x="11" y="189" width="192" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeYellow_2">
+<rect x="342" y="45" width="247" height="48" fill="#FFD46F"></rect>
+<rect x="342" y="45" width="247" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeGreen_2">
+<rect x="342" y="93" width="247" height="48" fill="#D6E18D"></rect>
+<rect x="342" y="93" width="247" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_2">
+<rect x="342" y="141" width="247" height="48" fill="#A6D9E2"></rect>
+<rect x="342" y="141" width="247" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeRed_2">
+<rect x="342" y="285" width="247" height="48" fill="#F7B39C"></rect>
+<rect x="342" y="285" width="247" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapePurple_2">
+<rect x="342" y="237" width="247" height="48" fill="#D3BDDB"></rect>
+<rect x="342" y="237" width="247" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapePink_2">
+<rect x="342" y="189" width="247" height="48" fill="#F2BCD7"></rect>
+<rect x="342" y="189" width="247" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeYellow_3">
+<rect x="175" y="69" width="138" height="48" fill="#FFD46F"></rect>
+<rect x="175" y="69" width="138" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeGreen_3">
+<rect x="175" y="117" width="138" height="48" fill="#D6E18D"></rect>
+<rect x="175" y="117" width="138" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_3">
+<rect x="175" y="165" width="138" height="48" fill="#A6D9E2"></rect>
+<rect x="175" y="165" width="138" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeRed_3">
+<rect x="175" y="309" width="138" height="48" fill="#F7B39C"></rect>
+<rect x="175" y="309" width="138" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapePurple_3">
+<rect x="175" y="261" width="138" height="48" fill="#D3BDDB"></rect>
+<rect x="175" y="261" width="138" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapePink_3">
+<rect x="175" y="213" width="138" height="48" fill="#F2BCD7"></rect>
+<rect x="175" y="213" width="138" height="48" stroke="#333333" stroke-width="2"></rect>
+</g>
+<text id="UI (Compose)" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="33.4287" y="74.25">UI (Compose)</tspan></text>
+<text id="ViewModel" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="33.124" y="122.25">ViewModel</tspan></text>
+<text id="Repository" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="33.4033" y="170.25">Repository</tspan></text>
+<text id="Data Access" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="33.3916" y="218.25">Data Access</tspan></text>
+<text id="Persistence (Room)" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="33.1426" y="266.25">Persistence (Room)</tspan></text>
+<text id="Data Model" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="33.167" y="314.25">Data Model</tspan></text>
+<g id="Arrow">
+<path id="Line" d="M174.986 68.1215L200.671 47.4027" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round" stroke-dasharray="2 4"></path>
+</g>
+<text id="The Architecture Cake" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="427.305" y="23">The Architecture Cake</tspan></text>
+<g id="Arrow_2">
+<path id="Line_2" d="M361 400L244.5 400L244.5 383.5L244.5 367" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+<path id="Tip" d="M251.345 368.195L245.175 360.195C244.971 359.931 244.571 359.936 244.375 360.206L238.545 368.206C238.304 368.536 238.54 369 238.949 369L250.949 369C251.364 369 251.598 368.523 251.345 368.195Z" fill="white" stroke="#333333" stroke-width="2"></path>
+<circle id="Circle" cx="6" cy="6" r="5" transform="matrix(1.19249e-08 -1 -1 -1.19249e-08 367 406)" fill="white" stroke="#333333" stroke-width="2"></circle>
+</g>
+<g id="Shape">
+<rect x="341" y="385" width="140" height="29" rx="8" fill="white"></rect>
+<rect x="341" y="385" width="140" height="29" rx="8" stroke="#333333" stroke-width="2"></rect>
+<text id="One slice at a time" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="13" font-weight="500" letter-spacing="0em"><tspan x="356.245" y="404.375">One slice at a time</tspan></text>
+</g>
+<g id="Arrow_3">
+<path id="Line_3" d="M312.986 68.1215L339.449 46.7748" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round" stroke-dasharray="2 4"></path>
+</g>
+<g id="Arrow_4">
+<path id="Line_4" d="M314.29 357.032L340.241 335.065" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round" stroke-dasharray="2 4"></path>
+</g>
+</g>
+</svg>
 
 以下是你将使用的目录：
 
@@ -126,7 +410,385 @@ ksp (libs.room.compiler)
 
 对于 Room，将数据库命名为：`recipe_database`，模型类命名为：`RecipeDb` 和 `IngredientDb`。下图将帮助你可视化 Room 用于将类转换为底层数据库的过程：
 
-数据库 RecipeDao IngredientDao RecipeDatabase id:Int title: String image: String? summary: String instructions:String? sourceUrl: String preparationMinutes: Int cookingMinutes: Int readyInMinutes: Int servings: Int 模型实体 RecipeDb id:Int recipeId: Int? name: String aisle:String? image: String? original: String amount: Double unit: String IngredientDb recipe\_database id title image summary instructions sourceUrl Recipe 表 id recipeId name aisle image original Ingredient 表 Room Room Room Room 数据库创建过程
+<svg width="600" height="630" viewBox="0 0 600 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="db_to_database">
+<g id="ShapeYellow">
+<rect x="589" y="499" width="305" height="98" rx="49" transform="rotate(-180 589 499)" fill="#FFD46F"></rect>
+<rect x="589" y="499" width="305" height="98" rx="49" transform="rotate(-180 589 499)" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeYellow_2">
+<rect x="11" y="11" width="145" height="195" rx="13" fill="#FFD46F"></rect>
+<rect x="11" y="11" width="145" height="195" rx="13" stroke="#333333" stroke-width="2"></rect>
+</g>
+<text id="Database" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="53.6689" y="42.25">Database</tspan></text>
+<g id="ShapeGreen">
+<rect x="19" y="102" width="129" height="77" fill="#D6E18D"></rect>
+<rect x="19" y="102" width="129" height="77" stroke="#333333" stroke-width="2"></rect>
+<text id="RecipeDao IngredientDao" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="54.0156" y="139">RecipeDao
+</tspan><tspan x="43.7793" y="151">IngredientDao</tspan></text>
+</g>
+<g id="ShapeLightBlue">
+<rect x="19" y="64" width="129" height="38" fill="#A6D9E2"></rect>
+<rect x="19" y="64" width="129" height="38" stroke="#333333" stroke-width="2"></rect>
+<text id="RecipeDatabase" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="38.793" y="86.5">RecipeDatabase</tspan></text>
+</g>
+<g id="ShapeLightBlue_2">
+<rect x="284" y="148" width="305" height="303" fill="#FFD46F"></rect>
+<rect x="284" y="148" width="305" height="303" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeYellow_3">
+<rect x="1" y="240" width="155" height="379" rx="13" fill="#FFD46F"></rect>
+<rect x="1" y="240" width="155" height="379" rx="13" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeGreen_2">
+<rect x="18" y="319" width="131" height="129" fill="#D6E18D"></rect>
+<rect x="18" y="319" width="131" height="129" stroke="#333333" stroke-width="2"></rect>
+<text id="id:Int title: String image: String? summary: String instructions:String? sourceUrl: String preparationMinutes: Int cookingMinutes: Int readyInMinutes: Int servings: Int" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="23" y="338.125">id:Int
+</tspan><tspan x="23" y="349.125">title: String
+</tspan><tspan x="23" y="360.125">image: String?
+</tspan><tspan x="23" y="371.125">summary: String
+</tspan><tspan x="23" y="382.125">instructions:String?
+</tspan><tspan x="23" y="393.125">sourceUrl: String
+</tspan><tspan x="23" y="404.125">preparationMinutes: Int
+</tspan><tspan x="23" y="415.125">cookingMinutes: Int
+</tspan><tspan x="23" y="426.125">readyInMinutes: Int
+</tspan><tspan x="23" y="437.125">servings: Int
+</tspan></text>
+</g>
+<text id="Model Entities" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="38.2881" y="267.25">Model Entities</tspan></text>
+<g id="ShapeLightBlue_3">
+<rect x="18" y="281" width="131" height="38" fill="#A6D9E2"></rect>
+<rect x="18" y="281" width="131" height="38" stroke="#333333" stroke-width="2"></rect>
+<text id="RecipeDb" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="57.1445" y="303.5">RecipeDb</tspan></text>
+</g>
+<g id="ShapeGreen_3">
+<rect x="18" y="495" width="131" height="110" fill="#D6E18D"></rect>
+<rect x="18" y="495" width="131" height="110" stroke="#333333" stroke-width="2"></rect>
+<text id="id:Int recipeId: Int? name: String aisle:String? image: String? original: String amount: Double unit: String" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="23" y="513.625">id:Int
+</tspan><tspan x="23" y="524.625">recipeId: Int?
+</tspan><tspan x="23" y="535.625">name: String
+</tspan><tspan x="23" y="546.625">aisle:String?
+</tspan><tspan x="23" y="557.625">image: String?
+</tspan><tspan x="23" y="568.625">original: String
+</tspan><tspan x="23" y="579.625">amount: Double
+</tspan><tspan x="23" y="590.625">unit: String</tspan></text>
+</g>
+<g id="ShapeLightBlue_4">
+<rect x="18" y="457" width="131" height="38" fill="#A6D9E2"></rect>
+<rect x="18" y="457" width="131" height="38" stroke="#333333" stroke-width="2"></rect>
+<text id="IngredientDb" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="46.9082" y="479.5">IngredientDb</tspan></text>
+</g>
+<g id="ShapeYellow_4">
+<rect x="285" y="97" width="304" height="95" rx="47.5" fill="#FFD46F"></rect>
+<rect x="285" y="97" width="304" height="95" rx="47.5" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="Device">
+<g id="ShapePattern">
+<rect x="589" y="192" width="305" height="95" rx="47.5" transform="rotate(-180 589 192)" fill="white"></rect>
+<rect x="589" y="192" width="305" height="95" rx="47.5" transform="rotate(-180 589 192)" stroke="#333333" stroke-width="2"></rect>
+<g id="Pattern">
+<path id="Line" d="M590 142.5L283 142.5" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+<path id="Line_2" d="M590 146.5L283 146.5" stroke="#333333" stroke-width="2" stroke-miterlimit="16"></path>
+</g>
+</g>
+</g>
+<g id="ShapeInner">
+<rect x="365" y="120" width="139" height="47" rx="13" fill="white"></rect>
+<rect x="365" y="120" width="139" height="47" rx="13" stroke="#333333" stroke-width="2"></rect>
+<g id="ShapeInnerForeYellow">
+<rect x="370" y="125" width="129" height="37" rx="9" fill="#FFD46F"></rect>
+<rect x="370" y="125" width="129" height="37" rx="9" stroke="#333333" stroke-width="2"></rect>
+<text id="Label" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="13" font-weight="500" letter-spacing="0em"><tspan x="385.433" y="148.375">recipe_database</tspan></text>
+</g>
+</g>
+<g id="ShapePink">
+<rect x="290.191" y="223.626" width="35.3021" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="290.191" y="223.626" width="35.3021" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="id" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="303.131" y="239.217">id</tspan></text>
+</g>
+<g id="ShapePink_2">
+<rect x="325.628" y="223.626" width="38.0997" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="325.628" y="223.626" width="38.0997" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="title" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="334.58" y="239.217">title</tspan></text>
+</g>
+<g id="ShapePink_3">
+<rect x="363.862" y="223.626" width="43.695" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="363.862" y="223.626" width="43.695" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="image" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="370.407" y="239.217">image</tspan></text>
+</g>
+<g id="ShapePink_4">
+<rect x="407.692" y="223.626" width="54.8856" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="407.692" y="223.626" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="summary" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="411.529" y="239.217">summary</tspan></text>
+</g>
+<g id="ShapePink_5">
+<rect x="462.713" y="223.626" width="66.0762" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="462.713" y="223.626" width="66.0762" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="instructions" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="465.839" y="239.217">instructions</tspan></text>
+</g>
+<g id="ShapePink_6">
+<rect x="528.924" y="223.626" width="54.8856" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="528.924" y="223.626" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="sourceUrl" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="532.003" y="239.217">sourceUrl</tspan></text>
+</g>
+<g id="ShapeLightBlue_5">
+<rect x="290.191" y="246.656" width="35.3021" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="290.191" y="246.656" width="35.3021" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_6">
+<rect x="325.628" y="246.656" width="38.0997" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="325.628" y="246.656" width="38.0997" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_7">
+<rect x="363.862" y="246.656" width="43.695" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="363.862" y="246.656" width="43.695" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_8">
+<rect x="407.692" y="246.656" width="54.8856" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="407.692" y="246.656" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_9">
+<rect x="462.713" y="246.656" width="66.0762" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="462.713" y="246.656" width="66.0762" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_10">
+<rect x="528.924" y="246.656" width="54.8856" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="528.924" y="246.656" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_11">
+<rect x="290.191" y="269.686" width="35.3021" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="290.191" y="269.686" width="35.3021" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_12">
+<rect x="325.628" y="269.686" width="38.0997" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="325.628" y="269.686" width="38.0997" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_13">
+<rect x="363.862" y="269.686" width="43.695" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="363.862" y="269.686" width="43.695" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_14">
+<rect x="407.692" y="269.686" width="54.8856" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="407.692" y="269.686" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_15">
+<rect x="462.713" y="269.686" width="66.0762" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="462.713" y="269.686" width="66.0762" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_16">
+<rect x="528.924" y="269.686" width="54.8856" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="528.924" y="269.686" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_17">
+<rect x="290.191" y="292.715" width="35.3021" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="290.191" y="292.715" width="35.3021" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_18">
+<rect x="325.628" y="292.715" width="38.0997" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="325.628" y="292.715" width="38.0997" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_19">
+<rect x="363.862" y="292.715" width="43.695" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="363.862" y="292.715" width="43.695" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_20">
+<rect x="407.692" y="292.715" width="54.8856" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="407.692" y="292.715" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_21">
+<rect x="462.713" y="292.715" width="66.0762" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="462.713" y="292.715" width="66.0762" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_22">
+<rect x="528.924" y="292.715" width="54.8856" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="528.924" y="292.715" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeGreen_4">
+<rect x="290.191" y="201" width="293.619" height="22.9317" fill="#D6E18D"></rect>
+<rect x="290.191" y="201" width="293.619" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="Recipe Table" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="13" font-weight="500" letter-spacing="0em"><tspan x="399.022" y="217.341">Recipe Table</tspan></text>
+</g>
+<g id="Group 2">
+<g id="ShapePink_7">
+<rect x="290.191" y="345.705" width="35.3021" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="290.191" y="345.705" width="35.3021" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="id_2" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="303.131" y="361.296">id</tspan></text>
+</g>
+<g id="ShapePink_8">
+<rect x="325.628" y="345.432" width="53.0205" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="325.628" y="345.432" width="53.0205" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="recipeId" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="330.944" y="361.022">recipeId</tspan></text>
+</g>
+<g id="ShapePink_9">
+<rect x="377.851" y="345.432" width="52.088" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="377.851" y="345.432" width="52.088" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="name" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="389.779" y="361.022">name</tspan></text>
+</g>
+<g id="ShapePink_10">
+<rect x="429.141" y="345.432" width="48.3578" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="429.141" y="345.432" width="48.3578" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="aisle" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="441.503" y="361.022">aisle</tspan></text>
+</g>
+<g id="ShapePink_11">
+<rect x="477.634" y="345.432" width="51.1554" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="477.634" y="345.432" width="51.1554" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="image_2" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="487.909" y="361.022">image</tspan></text>
+</g>
+<g id="ShapePink_12">
+<rect x="528.924" y="345.705" width="54.8856" height="22.9317" fill="#F2BCD7"></rect>
+<rect x="528.924" y="345.705" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="original" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="537.514" y="361.296">original</tspan></text>
+</g>
+<g id="ShapeLightBlue_23">
+<rect x="290.191" y="368.735" width="35.3021" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="290.191" y="368.735" width="35.3021" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_24">
+<rect x="325.628" y="368.644" width="53.0205" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="325.628" y="368.644" width="53.0205" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_25">
+<rect x="377.851" y="368.644" width="52.088" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="377.851" y="368.644" width="52.088" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_26">
+<rect x="429.141" y="368.644" width="48.3578" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="429.141" y="368.644" width="48.3578" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_27">
+<rect x="477.634" y="368.644" width="51.1554" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="477.634" y="368.644" width="51.1554" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_28">
+<rect x="528.924" y="368.735" width="54.8856" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="528.924" y="368.735" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_29">
+<rect x="290.191" y="391.765" width="35.3021" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="290.191" y="391.765" width="35.3021" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_30">
+<rect x="325.628" y="391.856" width="53.0205" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="325.628" y="391.856" width="53.0205" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_31">
+<rect x="377.851" y="391.856" width="52.088" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="377.851" y="391.856" width="52.088" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_32">
+<rect x="429.141" y="391.856" width="48.3578" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="429.141" y="391.856" width="48.3578" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_33">
+<rect x="477.634" y="391.856" width="51.1554" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="477.634" y="391.856" width="51.1554" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_34">
+<rect x="528.924" y="391.765" width="54.8856" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="528.924" y="391.765" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_35">
+<rect x="290.191" y="414.794" width="35.3021" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="290.191" y="414.794" width="35.3021" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_36">
+<rect x="325.628" y="415.068" width="53.0205" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="325.628" y="415.068" width="53.0205" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_37">
+<rect x="377.851" y="415.068" width="52.088" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="377.851" y="415.068" width="52.088" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_38">
+<rect x="429.141" y="415.068" width="48.3578" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="429.141" y="415.068" width="48.3578" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_39">
+<rect x="477.634" y="415.068" width="51.1554" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="477.634" y="415.068" width="51.1554" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeLightBlue_40">
+<rect x="528.924" y="414.794" width="54.8856" height="22.9317" fill="#A6D9E2"></rect>
+<rect x="528.924" y="414.794" width="54.8856" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+</g>
+<g id="ShapeGreen_5">
+<rect x="290.191" y="323.079" width="293.619" height="22.9317" fill="#D6E18D"></rect>
+<rect x="290.191" y="323.079" width="293.619" height="22.9317" stroke="#333333" stroke-width="2"></rect>
+<text id="Ingredient Table" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="13" font-weight="500" letter-spacing="0em"><tspan x="387.933" y="339.42">Ingredient Table</tspan></text>
+</g>
+</g>
+<g id="ShapePurple">
+<rect x="187" y="144" width="66" height="48" rx="13" fill="#D3BDDB"></rect>
+<rect x="187" y="144" width="66" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Room" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="198.789" y="174">Room</tspan></text>
+</g>
+<g id="ShapePurple_2">
+<rect x="187" y="247" width="66" height="48" rx="13" fill="#D3BDDB"></rect>
+<rect x="187" y="247" width="66" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Room_2" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="198.789" y="277">Room</tspan></text>
+</g>
+<g id="ShapePurple_3">
+<rect x="187" y="488" width="66" height="48" rx="13" fill="#D3BDDB"></rect>
+<rect x="187" y="488" width="66" height="48" rx="13" stroke="#333333" stroke-width="2"></rect>
+<text id="Room_3" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="198.789" y="518">Room</tspan></text>
+</g>
+<g id="Group 4">
+<g id="Arrow">
+<path id="Line_3" d="M147 127L164 127L164 147.5L164 168" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+</g>
+<g id="Arrow_2">
+<path id="Line_4" d="M164 168L177 168" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip" d="M175.805 161.655L183.805 167.825C184.069 168.029 184.064 168.429 183.794 168.625L175.794 174.455C175.464 174.696 175 174.46 175 174.051V162.051C175 161.636 175.477 161.402 175.805 161.655Z" fill="white" stroke="#333333" stroke-width="2"></path>
+</g>
+</g>
+<g id="Group 6">
+<g id="Arrow_3">
+<path id="Line_5" d="M149 301L166 301L166 286L166 271" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+</g>
+<g id="Arrow_4">
+<path id="Line_6" d="M166 271L177 271" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_2" d="M175.805 277.345L183.805 271.175C184.069 270.971 184.064 270.571 183.794 270.375L175.794 264.545C175.464 264.304 175 264.54 175 264.949V276.949C175 277.364 175.477 277.598 175.805 277.345Z" fill="white" stroke="#333333" stroke-width="2"></path>
+</g>
+</g>
+<g id="Group 8">
+<g id="Arrow_5">
+<path id="Line_7" d="M254 271L271 271L271 242L271 213" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+</g>
+<g id="Arrow_6">
+<path id="Line_8" d="M271 213L282 213" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_3" d="M280.805 219.345L288.805 213.175C289.069 212.971 289.064 212.571 288.794 212.375L280.794 206.545C280.464 206.304 280 206.54 280 206.949V218.949C280 219.364 280.477 219.598 280.805 219.345Z" fill="white" stroke="#333333" stroke-width="2"></path>
+</g>
+</g>
+<g id="Group 9">
+<g id="Arrow_7">
+<path id="Line_9" d="M254 513L265 513L265 418L265 323" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+</g>
+<g id="Arrow_8">
+<path id="Line_10" d="M265 323L276 323" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_4" d="M273.805 329.345L281.805 323.175C282.069 322.971 282.064 322.571 281.794 322.375L273.794 316.545C273.464 316.304 273 316.54 273 316.949V328.949C273 329.364 273.477 329.598 273.805 329.345Z" fill="white" stroke="#333333" stroke-width="2"></path>
+</g>
+</g>
+<g id="Group 7">
+<g id="Arrow_9">
+<path id="Line_11" d="M149 544L166 544L166 529L166 514" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+</g>
+<g id="Arrow_10">
+<path id="Line_12" d="M166 514L177 514" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_5" d="M175.805 520.345L183.805 514.175C184.069 513.971 184.064 513.571 183.794 513.375L175.794 507.545C175.464 507.304 175 507.54 175 507.949V519.949C175 520.364 175.477 520.598 175.805 520.345Z" fill="white" stroke="#333333" stroke-width="2"></path>
+</g>
+</g>
+<g id="Group 5">
+<g id="Arrow_11">
+<path id="Line_13" d="M222 143L222 64L329.5 64L437 64" stroke="#333333" stroke-width="2" stroke-miterlimit="1.11658" stroke-linejoin="round"></path>
+</g>
+<g id="Arrow_12">
+<path id="Line_14" d="M436 65.0001L436 87.0001" stroke="#333333" stroke-width="2" stroke-miterlimit="16" stroke-linecap="round"></path>
+<path id="Tip_6" d="M442.345 85.8054L436.175 93.8052C435.971 94.0692 435.571 94.0637 435.375 93.7943L429.545 85.7945C429.304 85.4641 429.54 85.0001 429.949 85.0001L441.949 85.0001C442.364 85.0001 442.598 85.4767 442.345 85.8054Z" fill="white" stroke="#333333" stroke-width="2"></path>
+</g>
+</g>
+<text id="Room Database Creation Process" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="309.039" y="30">Room Database Creation Process</tspan></text>
+</g>
+</svg>
 
 ### 实体
 
