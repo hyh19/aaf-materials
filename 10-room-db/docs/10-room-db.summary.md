@@ -126,6 +126,7 @@ interface RecipeDao {
 ### 性能考量
 
 文章强调了几个性能相关的最佳实践：
+
 - 使用单例模式创建数据库实例（`RecipeDatabase`）
 - 使用 `Volatile` 和 `synchronized` 确保线程安全
 - 在后台线程（通过 `Dispatchers.IO`）执行所有数据库操作
@@ -183,4 +184,4 @@ flowchart LR
     E2 --> E21["CompositionLocal"]
     E2 --> E22["状态管理"]
     E2 --> E23["UI 更新"]
-``` 
+```
