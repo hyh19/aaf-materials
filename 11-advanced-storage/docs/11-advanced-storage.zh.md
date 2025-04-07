@@ -4,7 +4,7 @@
 
 ## 文件和目录
 
-```
+```kotlin
 Context.cacheDir
 Context.filesDir
 ```
@@ -22,15 +22,15 @@ file.bufferedWriter().use { out ->  out.write("This is a test") }
 
 通过 **View ▸ Tool Windows ▸ Device Explorer** 打开 Device Explorer。你将在 **data/data** 文件夹中找到所有设备的应用文件夹：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original.png)
+![1743987721293](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743987719861.png)  
 
 滚动到末尾找到 **com.kodeco.recipefinder**。你将在这里找到 **test.txt** 文件：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(1).png)
+![1743987748852](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743987746986.png)  
 
 双击该文件在 Android Studio 中打开它：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(2).png)
+![1743987757234](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743987755797.png)  
 
 如果你想查找缓存目录的大小，请在你的 Activity 中尝试以下代码：
 
@@ -517,4 +517,4 @@ repository = RecipeRepository(
 
 要了解有关加密文件和首选项的更多信息，请访问：[https://developer.android.com/topic/security/data](https://developer.android.com/topic/security/data)。
 
-要了解有关 SQLCipher 的更多信息，请访问：[https://www.zetetic.net/sqlcipher/sqlcipher-for-android/](https://www.zetetic.net/sqlcipher/sqlcipher-for-android/)。 
+要了解有关 SQLCipher 的更多信息，请访问：[https://www.zetetic.net/sqlcipher/sqlcipher-for-android/](https://www.zetetic.net/sqlcipher/sqlcipher-for-android/)。
