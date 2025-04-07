@@ -140,39 +140,39 @@ contentResolver.takePersistableUriPermission(uri, takeFlags)
 
 在上一章中，你使用 Room 创建了一个 SQLite 数据库。Android Studio 有一个数据库浏览器，可以让你轻松查看数据。要访问浏览器，使用菜单 **View ▸ Tool Windows ▸ App Inspection**。这将显示如下视图：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(3).png)
+![1743989409262](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989407762.png)  
 
 在这里，你可以看到你的 Recipe Database，其中包含 ingredients、recipes 和一个名为 room\_master\_table 的特殊表。双击 recipes 表可查看当前存储在表中的数据：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(4).png)
+![1743989440494](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989438957.png)  
 
 现在，打开 **RecipeDao** 文件。你会注意到左侧装订线中有几个数据库图标：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(5).png)
+![1743989459747](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989458275.png)  
 
 通过单击该图标运行这些查询。这会弹出一个对话框，如：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(6).png)
+![1743989481558](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989479912.png)  
 
 这里显示了一个食谱的 ID。单击"Run"可以看到类似的内容：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(7).png)
+![1743989500123](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989498738.png)  
 
 你还可以通过键入 SQL 语句并单击新查询按钮来运行查询：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(8).png)
+![1743989513199](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989511630.png)  
 
 新标签出现后，你可以通过键入 SQL 命令并单击"Run"来运行查询：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(9).png)
+![1743989526665](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989525292.png)  
 
 运行足够多的查询后，你可以从历史按钮访问它们：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(10).png)
+![1743989541769](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989540250.png)  
 
 即使你的应用在离线模式下崩溃，你也可以运行检查器。你不能进行更改，但可以查看当前缓存的数据。如果你想导出数据，单击"Export as File"按钮：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(11).png)
+![1743989553441](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989552091.png)  
 
 然后，选择文件类型：
 
@@ -180,7 +180,7 @@ contentResolver.takePersistableUriPermission(uri, takeFlags)
 + **SQL**：SQL 语句
 + **CSV**：逗号分隔值
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(12).png)
+![1743989564058](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989562722.png)  
 
 ## 安全性
 
@@ -359,15 +359,15 @@ prefs = SecurePrefs(this)
 
 你会看到类似这样的内容：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(13).png)
+![1743989948012](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989946174.png)  
 
 注意，当前突出显示的路径是 **data/data**。这是应用存储所有信息的地方。打开这个文件夹并滚动到底部的应用：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(14).png)
+![1743989960386](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989958778.png)  
 
 打开它。在 **shared\_prefs** 文件夹中，找到并打开 **encrypted\_preferences.xml** 文件。你应该会看到类似这样的内容：
 
- ![](./Android Fundamentals by Tutorials, Chapter 11_Advanced Storage_ Kodeco_files/original(15).png)
+![1743989975439](https://cdn.jsdelivr.net/gh/hyh19/images3@master/1743989973943.png)  
 
 你理解其中的任何内容吗？不理解？这意味着它已加密。密钥和值都已加密。你现在拥有一组安全的首选项。
 
@@ -379,13 +379,13 @@ prefs = SecurePrefs(this)
 
 打开 **gradle/libs.versions.toml**。在 **versions** 部分的末尾，添加：
 
-```
+```kotlin
 sqlcipher = "4.4.0"
 ```
 
 然后，在 **\[libraries\]** 部分的末尾，添加：
 
-```
+```kotlin
 # Secure Room
 sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "sqlcipher" }
 ```
